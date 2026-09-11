@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureCool Delhi NCR | CCTV & AC Experts - Installation, Repair & AMC</title>
+<meta name="description" content="Delhi NCR's Most Trusted CCTV & AC Service. Expert Installation, Repair, Gas Charging & AMC for Homes, Offices & Societies. 24/7 Support. Call 1800-SECURE-01">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{ jakarta:['Plus Jakarta Sans','sans-serif'], inter:['Inter','sans-serif']},
+      colors:{
+        navy:{900:'#0A1931',800:'#0F2440',700:'#162B4D',600:'#1E3A6D'},
+        accent:{DEFAULT:'#FF6B2C',hover:'#E85E24'},
+        cyan:{DEFAULT:'#06B6D4'}
+      }
+    }
+  }
+}
+</script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif}
+.font-jakarta{font-family:'Plus Jakarta Sans',sans-serif}
+.glass{backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px)}
+.before-after-container{position:relative; overflow:hidden; user-select:none; cursor:ew-resize}
+.before-img{position:absolute; inset:0; overflow:hidden; width:50%; border-right:3px solid white}
+.slider-handle{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,.25); z-index:10}
+.no-scrollbar::-webkit-scrollbar{display:none}
+.no-scrollbar{-ms-overflow-style:none; scrollbar-width:none}
+</style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden">
+
+<!-- Top Bar -->
+<div class="bg-navy-900 text-white text-[12.5px] leading-none">
+  <div class="max-w-[1280px] mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-2">
+    <div class="flex items-center gap-4 md:gap-6 flex-wrap">
+      <a href="tel:+919999999999" class="flex items-center gap-2 bg-white/10 hover:bg-white/15 transition px-3 py-1.5 rounded-full">
+        <span class="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[10px]"><i class="fa-solid fa-phone"></i></span>
+        <span class="font-semibold tracking-wide">EMERGENCY: +91 99999 99999</span>
+        <span class="hidden md:inline bg-emerald-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">24/7 AVAILABLE</span>
+      </a>
+      <span class="hidden lg:flex items-center gap-1.5 text-white/80"><i class="fa-solid fa-location-dot text-accent"></i> Serving: Delhi • Noida • Gurugram • Faridabad • Ghaziabad</span>
+    </div>
+    <div class="flex items-center gap-3 ml-auto">
+      <span class="hidden md:inline text-white/60">Follow us:</span>
+      <div class="flex gap-2">
+        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-instagram text-xs"></i></a>
+        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+        <a href="#" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-youtube text-xs"></i></a>
+      </div>
+      <span class="hidden md:inline-flex items-center gap-1 bg-white text-navy-900 px-2.5 py-1 rounded-full font-bold text-[11px]"><i class="fa-solid fa-star text-amber-500"></i> 4.9/5 (2,847 Reviews)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="header" class="sticky top-0 z-40 bg-white/95 glass border-b border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-navy-900 flex items-center justify-center text-white text-lg"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="leading-tight">
+        <div class="font-jakarta font-extrabold text-[18px] tracking-tight text-navy-900">SecureCool<span class="text-accent">.</span></div>
+        <div class="text-[10px] tracking-[0.18em] font-semibold text-slate-500 -mt-1">DELHI NCR • SINCE 2012</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1 font-medium text-[14px]">
+      <a href="#home" class="px-3 py-2 rounded-lg bg-slate-900 text-white">Home</a>
+      <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-100">About</a>
+
+      <div class="relative group">
+        <button class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-1">CCTV Services <i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+        <div class="absolute left-0 top-full mt-2 w-[260px] bg-white rounded-2xl shadow-xl border border-slate-100 p-2 hidden group-hover:block">
+          <a href="#services" onclick="switchService('cctv')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-blue-50 text-navy-700 flex items-center justify-center"><i class="fa-solid fa-video"></i></span><span><span class="block text-sm font-semibold">New Installation</span><span class="text-xs text-slate-500">HD, IP & WiFi Cameras</span></span></a>
+          <a href="#services" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center"><i class="fa-solid fa-screwdriver-wrench"></i></span><span><span class="block text-sm font-semibold">Repair & Troubleshooting</span><span class="text-xs text-slate-500">DVR, Wiring & Night Vision</span></span></a>
+          <a href="#pricing" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center"><i class="fa-solid fa-file-shield"></i></span><span><span class="block text-sm font-semibold">AMC Services</span><span class="text-xs text-slate-500">Yearly Maintenance</span></span></a>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-1">AC Services <i class="fa-solid fa-chevron-down text-[10px]"></i></button>
+        <div class="absolute left-0 top-full mt-2 w-[260px] bg-white rounded-2xl shadow-xl border border-slate-100 p-2 hidden group-hover:block">
+          <a href="#services" onclick="switchService('ac')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center"><i class="fa-solid fa-snowflake"></i></span><span><span class="block text-sm font-semibold">AC Installation</span><span class="text-xs text-slate-500">Split, Window & Cassette</span></span></a>
+          <a href="#services" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-orange-50 text-accent flex items-center justify-center"><i class="fa-solid fa-fire-burner"></i></span><span><span class="block text-sm font-semibold">Repair & Gas Charging</span><span class="text-xs text-slate-500">All Brands</span></span></a>
+          <a href="#services" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50"><span class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center"><i class="fa-solid fa-pump-medical"></i></span><span><span class="block text-sm font-semibold">Deep Cleaning</span><span class="text-xs text-slate-500">Jet Pump Service</span></span></a>
+        </div>
+      </div>
+
+      <a href="#pricing" class="px-3 py-2 rounded-lg hover:bg-slate-100">Pricing</a>
+      <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-slate-100">Our Work</a>
+      <a href="#contact" class="px-3 py-2 rounded-lg hover:bg-slate-100">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="tel:+919999999999" class="hidden md:inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-full font-semibold text-sm hover:bg-slate-50"><i class="fa-solid fa-phone text-accent"></i> Call Now</a>
+      <button onclick="openModal()" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-orange-200 transition">Book a Technician <i class="fa-solid fa-arrow-right text-xs"></i></button>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-slate-100 bg-white">
+    <div class="px-4 py-4 space-y-1 text-sm">
+      <a href="#home" class="block py-2.5 px-3 rounded-lg bg-slate-900 text-white">Home</a>
+      <a href="#about" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">About Us</a>
+      <a href="#services" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">CCTV Services</a>
+      <a href="#services" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">AC Services</a>
+      <a href="#pricing" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">Pricing / Packages</a>
+      <a href="#gallery" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">Gallery / Our Work</a>
+      <a href="#contact" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="relative overflow-hidden bg-gradient-to-br from-[#0A1931] via-[#0F2440] to-[#12325E]">
+  <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size:32px 32px"></div>
+  <div class="max-w-[1280px] mx-auto px-4 relative">
+    <div class="grid lg:grid-cols-2 gap-8 items-center py-8 lg:py-12">
+      <!-- Left Copy -->
+      <div class="text-white pt-2">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Trusted by 10,000+ Homes & Businesses in Delhi NCR
+          <span class="hidden sm:inline-flex ml-2 bg-white text-navy-900 px-2 py-0.5 rounded-full text-[11px]">★ 4.9 Google Rating</span>
+        </div>
+        <h1 class="font-jakarta font-extrabold text-[32px] sm:text-[42px] lg:text-[48px] leading-[0.95] mt-5">
+          Smart Security<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B2C] to-[#FF8A4A]">& Perfect Cooling</span><br>
+          For Your Home & Business
+        </h1>
+        <p class="text-white/80 text-[15px] lg:text-[16px] leading-relaxed mt-4 max-w-[560px]">Expert CCTV Installation & AC Repair Services at your doorstep. Certified technicians, same-day service & <span class="text-white font-semibold underline decoration-accent decoration-2">100% Satisfaction Guaranteed.</span></p>
+
+        <div class="flex flex-wrap gap-3 mt-6">
+          <button onclick="openModal()" class="bg-accent hover:bg-accent-hover text-white font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 shadow-xl shadow-orange-900/30 transition"><i class="fa-solid fa-clipboard-check"></i> Get Free Site Survey <i class="fa-solid fa-arrow-right text-xs"></i></button>
+          <a href="tel:+919999999999" class="bg-white text-navy-900 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 hover:bg-slate-100 transition"><span class="w-7 h-7 rounded-full bg-navy-900 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-phone"></i></span> Call Now: 99999 99999</a>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-6 text-xs">
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"><i class="fa-regular fa-clock text-emerald-300"></i> 90 Mins Response Time</span>
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"><i class="fa-solid fa-shield-halved text-cyan-300"></i> 1 Year Warranty</span>
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"><i class="fa-solid fa-tags text-amber-300"></i> No Hidden Charges</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mt-8 max-w-[520px]">
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-4 text-center backdrop-blur">
+            <div class="font-jakarta font-extrabold text-2xl">10K+</div><div class="text-[11px] tracking-widest text-white/70">HAPPY CLIENTS</div>
+          </div>
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-4 text-center backdrop-blur">
+            <div class="font-jakarta font-extrabold text-2xl">12+</div><div class="text-[11px] tracking-widest text-white/70">YEARS EXPERIENCE</div>
+          </div>
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-4 text-center backdrop-blur">
+            <div class="font-jakarta font-extrabold text-2xl">24/7</div><div class="text-[11px] tracking-widest text-white/70">EMERGENCY SUPPORT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual -->
+      <div class="relative lg:h-[560px] flex items-center">
+        <div class="grid grid-cols-2 gap-4 w-full">
+          <!-- CCTV Card -->
+          <div class="bg-white rounded-[22px] overflow-hidden shadow-2xl">
+            <div class="relative h-[260px]">
+              <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="CCTV">
+              <span class="absolute top-3 left-3 bg-navy-900 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1"><span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span> LIVE • 24/7 Monitoring</span>
+              <div class="absolute bottom-3 left-3 right-3 bg-white rounded-xl p-3 flex items-center gap-3 shadow-lg">
+                <div class="w-9 h-9 rounded-lg bg-blue-50 text-navy-700 flex items-center justify-center"><i class="fa-solid fa-video"></i></div>
+                <div><div class="text-sm font-bold leading-none">CCTV Installation</div><div class="text-xs text-slate-500">4K • Night Vision • Mobile View</div></div>
+              </div>
+            </div>
+            <div class="p-3 flex items-center justify-between text-xs"><span class="flex items-center gap-1 text-slate-600"><i class="fa-solid fa-check text-emerald-500"></i> Mess-Free Wiring</span><span class="font-bold text-accent">From ₹4,999</span></div>
+          </div>
+          <!-- AC Card -->
+          <div class="bg-white rounded-[22px] overflow-hidden shadow-2xl mt-8">
+            <div class="relative h-[260px]">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="AC">
+              <span class="absolute top-3 left-3 bg-white text-slate-800 text-[11px] font-bold px-3 py-1 rounded-full shadow">❄️ Inverter & Split AC</span>
+              <div class="absolute bottom-3 left-3 right-3 bg-navy-900 text-white rounded-xl p-3 flex items-center justify-between">
+                <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center"><i class="fa-solid fa-snowflake"></i></div><div><div class="text-sm font-bold leading-none">AC Services</div><div class="text-xs text-white/70">Installation • Gas • Service</div></div></div>
+                <span class="w-7 h-7 rounded-full bg-accent flex items-center justify-center"><i class="fa-solid fa-arrow-right text-xs"></i></span>
+              </div>
+            </div>
+            <div class="p-3 flex items-center justify-between text-xs"><span class="flex items-center gap-1 text-slate-600"><i class="fa-solid fa-bolt text-amber-500"></i> 90 Min Arrival</span><span class="font-bold text-cyan-600">From ₹399</span></div>
+          </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="hidden lg:flex absolute -right-2 top-6 bg-white rounded-2xl p-3 shadow-xl items-center gap-3">
+          <img src="https://i.pravatar.cc/100?img=15" class="w-9 h-9 rounded-full" alt="">
+          <div><div class="text-xs font-bold">Same Day Service ✓</div><div class="text-[11px] text-slate-500">Technician assigned in 15 mins</div></div>
+        </div>
+        <div class="hidden lg:flex absolute -left-6 bottom-10 bg-white rounded-2xl p-3 shadow-xl items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center"><i class="fa-solid fa-award"></i></div>
+          <div><div class="text-xs font-bold">Govt. Certified Team</div><div class="text-[11px] text-slate-500">Verified & Background Checked</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Booking Widget -->
+  <div class="relative z-20 -mb-10">
+    <div class="max-w-[1080px] mx-auto px-4">
+      <div class="bg-white rounded-[20px] shadow-2xl border border-slate-100 p-4 md:p-5 flex flex-col lg:flex-row items-center gap-4">
+        <div class="hidden md:flex items-center gap-3 pr-4 border-r border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-navy-900 text-white flex items-center justify-center"><i class="fa-solid fa-bolt"></i></div>
+          <div><div class="font-jakarta font-bold leading-none">Quick Booking</div><div class="text-xs text-slate-500">Get callback in 5 minutes</div></div>
+        </div>
+        <form id="quickBookForm" class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-3 w-full">
+          <div class="relative">
+            <i class="fa-regular fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input required placeholder="Your Name" class="w-full pl-9 pr-3 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm font-medium">
+          </div>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input required placeholder="Phone Number" pattern="[0-9]{10}" class="w-full pl-9 pr-3 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm font-medium">
+          </div>
+          <div class="relative">
+            <i class="fa-solid fa-list absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <select class="w-full pl-9 pr-8 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm font-medium appearance-none">
+              <option>Select Service</option>
+              <option>CCTV - New Installation</option>
+              <option>CCTV - Repair</option>
+              <option>CCTV - AMC</option>
+              <option>AC - Installation</option>
+              <option>AC - Repair & Gas Charging</option>
+              <option>AC - Deep Cleaning</option>
+            </select>
+            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+          </div>
+          <button type="submit" class="bg-accent hover:bg-accent-hover text-white font-bold py-3 rounded-xl inline-flex items-center justify-center gap-2 transition">Check Availability <i class="fa-solid fa-arrow-right text-xs"></i></button>
+        </form>
+        <div class="hidden lg:flex items-center gap-1 text-[11px] text-slate-500 whitespace-nowrap"><i class="fa-solid fa-lock text-emerald-500"></i> 100% Secure & Spam Free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST LOGOS -->
+<div class="pt-14 pb-6 bg-white border-y border-slate-100">
+  <div class="max-w-[1280px] mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-slate-400 text-xs font-semibold tracking-widest">
+    <span>TRUSTED BY LEADING SOCIETIES & BRANDS IN DELHI NCR</span>
+    <div class="flex flex-wrap items-center gap-6 md:gap-10 opacity-60">
+      <span class="flex items-center gap-2"><i class="fa-solid fa-building"></i> DLF Magnolias</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-warehouse"></i> Amazon Warehouse</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-shop"></i> Select City Walk</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-school"></i> DPS Schools</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-hotel"></i> Taj Hotels</span>
+    </div>
+  </div>
+</div>
+
+<!-- CORE SERVICES -->
+<section id="services" class="py-10 lg:py-14 bg-[#F8FAFC]">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="inline-flex items-center gap-2 bg-blue-50 text-navy-700 border border-blue-100 px-3 py-1 rounded-full text-xs font-bold tracking-widest"><i class="fa-solid fa-screwdriver-wrench"></i> OUR CORE SERVICES</span>
+      <h2 class="font-jakarta font-extrabold text-[28px] md:text-[36px] leading-tight text-navy-900 mt-3">Complete Solutions for <span class="text-accent">Security & Comfort</span></h2>
+      <p class="text-slate-500 text-sm mt-2">From single home to large warehouses & societies — we handle everything with proper wiring, clean installation & warranty support.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mt-8">
+      <div class="bg-slate-900 p-1.5 rounded-full inline-flex gap-1">
+        <button id="tabCCTV" onclick="switchService('cctv')" class="px-6 py-2.5 rounded-full font-bold text-sm bg-white text-navy-900 shadow">📹 CCTV Solutions</button>
+        <button id="tabAC" onclick="switchService('ac')" class="px-6 py-2.5 rounded-full font-bold text-sm text-white/80 hover:text-white">❄️ AC Solutions</button>
+      </div>
+    </div>
+
+    <!-- CCTV GRID -->
+    <div id="gridCCTV" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 text-navy-700 flex items-center justify-center text-lg group-hover:bg-navy-900 group-hover:text-white transition"><i class="fa-solid fa-video"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Proper & Better Installation</h3>
+        <p class="text-sm text-slate-500 mt-1">HD, IP, WiFi & 4K cameras with concealed wiring & smartphone view.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Free site survey & demo</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Branded Hikvision / Dahua / CP Plus</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-accent font-extrabold text-sm">Starts ₹4,999</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg group-hover:bg-accent group-hover:text-white transition"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Repair & Fault Finding</h3>
+        <p class="text-sm text-slate-500 mt-1">DVR offline, no recording, blurry night vision — fixed in one visit.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> 90 mins technician arrival</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Genuine spare parts</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-accent font-extrabold text-sm">Starts ₹299</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-lg group-hover:bg-violet-600 group-hover:text-white transition"><i class="fa-solid fa-moon"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Night-Vision Setup</h3>
+        <p class="text-sm text-slate-500 mt-1">Colour night vision with strong IR & motion alerts.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Up to 30m clarity at night</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Human detection alerts</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-accent font-extrabold text-sm">Starts ₹1,499</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg group-hover:bg-emerald-600 group-hover:text-white transition"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Smartphone Remote View</h3>
+        <p class="text-sm text-slate-500 mt-1">Watch live from anywhere. Setup on 4 phones free.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Hik-Connect / DMSS app</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Playback & alerts</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-accent font-extrabold text-sm">Free Setup</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+    </div>
+
+    <!-- AC GRID -->
+    <div id="gridAC" class="hidden grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-lg group-hover:bg-cyan-600 group-hover:text-white transition"><i class="fa-solid fa-snowflake"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Smart Inverter AC Installation</h3>
+        <p class="text-sm text-slate-500 mt-1">Perfect vacuum, leak-proof fitting & stabilizer setup.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Copper pipe & stand included</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> All brands - Daikin, LG, Voltas</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-cyan-600 font-extrabold text-sm">Starts ₹1,499</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-orange-50 text-accent flex items-center justify-center text-lg group-hover:bg-accent group-hover:text-white transition"><i class="fa-solid fa-fire"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Gas Charging & Repair</h3>
+        <p class="text-sm text-slate-500 mt-1">Low cooling? Full gas with pressure test & warranty.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> R32 / R410A original gas</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Leak arrest + 3 month warranty</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-accent font-extrabold text-sm">Starts ₹1,999</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg group-hover:bg-sky-600 group-hover:text-white transition"><i class="fa-solid fa-pump-soap"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Jet Pump Deep Cleaning</h3>
+        <p class="text-sm text-slate-500 mt-1">High-pressure foam wash removes dust & bacteria.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> 40% more cooling + less bill</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> Mess-free with sheet cover</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-sky-600 font-extrabold text-sm">Starts ₹399</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+      <div class="bg-white rounded-[20px] border border-slate-100 p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-lg group-hover:bg-rose-600 group-hover:text-white transition"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h3 class="font-jakarta font-bold mt-4">Breakdown & PCB Repair</h3>
+        <p class="text-sm text-slate-500 mt-1">AC not starting, water leakage, noise — fixed same day.</p>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> In-house PCB lab</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i> 6 months service warranty</li>
+        </ul>
+        <div class="flex items-center justify-between mt-5"><span class="text-rose-600 font-extrabold text-sm">Starts ₹299</span><button onclick="openModal()" class="text-sm font-bold text-navy-900 hover:text-accent">Book Now →</button></div>
+      </div>
+    </div>
+
+    <!-- AMC Banner -->
+    <div class="mt-8 bg-navy-900 rounded-[24px] p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10" style="background-image:linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size:24px 24px"></div>
+      <div class="relative flex-1">
+        <span class="bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">SAVE 40% WITH AMC</span>
+        <h3 class="font-jakarta font-extrabold text-xl md:text-2xl mt-3">Annual Maintenance Contract — Tension Free Service</h3>
+        <p class="text-white/70 text-sm mt-1">4 Services + Unlimited Breakdown Visits + Priority Support + Spare Parts at Cost Price</p>
+      </div>
+      <div class="relative flex flex-wrap items-center gap-3">
+        <div class="bg-white text-navy-900 rounded-2xl px-5 py-3 text-center"><div class="text-xs font-bold text-slate-500 line-through">₹6,000</div><div class="font-extrabold text-xl leading-none">₹3,499<span class="text-xs font-normal">/year</span></div><div class="text-[11px] text-emerald-600 font-bold">AC + CCTV Combo</div></div>
+        <button onclick="openModal()" class="bg-accent hover:bg-accent-hover text-white font-bold px-6 py-3.5 rounded-full">Get AMC Quote →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="about" class="py-10 lg:py-14 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full text-xs font-bold tracking-widest"><i class="fa-solid fa-shield-halved"></i> WHY DELHI NCR TRUSTS US</span>
+        <h2 class="font-jakarta font-extrabold text-[28px] md:text-[36px] leading-tight text-navy-900 mt-3">Not Just Service, <span class="text-accent">We Deliver Peace of Mind</span></h2>
+      </div>
+      <p class="text-sm text-slate-500 max-w-lg">Rated 4.9/5 on Google by 2,847 customers. We reach South Delhi, Dwarka, Noida, Gurugram, Faridabad & Ghaziabad within 90 minutes.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+      <div class="rounded-[20px] border border-slate-100 p-6 bg-white hover:shadow-lg transition">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 text-navy-700 flex items-center justify-center text-xl"><i class="fa-solid fa-id-badge"></i></div>
+        <h3 class="font-bold mt-4">Certified & Verified Technicians</h3>
+        <p class="text-sm text-slate-500 mt-1">Police verified, uniformed experts with 5+ years experience. No freelancers.</p>
+        <div class="mt-4 flex -space-x-2"><img src="https://i.pravatar.cc/80?img=11" class="w-7 h-7 rounded-full border-2 border-white"><img src="https://i.pravatar.cc/80?img=12" class="w-7 h-7 rounded-full border-2 border-white"><img src="https://i.pravatar.cc/80?img=13" class="w-7 h-7 rounded-full border-2 border-white"><span class="w-7 h-7 rounded-full bg-navy-900 text-white text-[10px] flex items-center justify-center border-2 border-white font-bold">50+</span></div>
+      </div>
+      <div class="rounded-[20px] border border-slate-100 p-6 bg-white hover:shadow-lg transition">
+        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl"><i class="fa-solid fa-headset"></i></div>
+        <h3 class="font-bold mt-4">24/7 Emergency Support</h3>
+        <p class="text-sm text-slate-500 mt-1">AC breakdown at midnight? CCTV offline before event? We are one call away.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs font-bold bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Avg. Response 18 mins</div>
+      </div>
+      <div class="rounded-[20px] border border-slate-100 p-6 bg-white hover:shadow-lg transition">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3 class="font-bold mt-4">Affordable & Transparent Pricing</h3>
+        <p class="text-sm text-slate-500 mt-1">Upfront quotation on WhatsApp. No hidden charges, no surprise visits.</p>
+        <div class="mt-4 text-xs bg-slate-900 text-white px-3 py-2 rounded-xl inline-flex gap-2"><i class="fa-solid fa-receipt"></i> Written Bill + GST Invoice</div>
+      </div>
+      <div class="rounded-[20px] border border-slate-100 p-6 bg-white hover:shadow-lg transition relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">MOST LOVED</div>
+        <div class="w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-xl"><i class="fa-solid fa-broom"></i></div>
+        <h3 class="font-bold mt-4">Proper & Mess-Free Installation</h3>
+        <p class="text-sm text-slate-500 mt-1">Concealed pipes & pipes, PVC casing, no wall damage. We leave your place cleaner.</p>
+        <div class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-violet-700 bg-violet-50 px-3 py-1.5 rounded-full"><i class="fa-solid fa-star"></i> Neatness Guarantee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="py-10 lg:py-14 bg-[#F1F5F9]">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="text-center">
+      <span class="inline-flex items-center gap-2 bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest text-navy-900">HOW IT WORKS</span>
+      <h2 class="font-jakarta font-extrabold text-[28px] md:text-[36px] text-navy-900 mt-3">Get It Fixed in <span class="text-accent">3 Easy Steps</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mt-10 relative">
+      <div class="hidden md:block absolute top-[34px] left-[16%] right-[16%] h-[2px] bg-slate-200"></div>
+      <div class="hidden md:block absolute top-[34px] left-[16%] right-[52%] h-[2px] bg-accent"></div>
+      <div class="bg-white rounded-[20px] p-6 text-center border border-slate-100 relative">
+        <div class="w-16 h-16 rounded-2xl bg-navy-900 text-white flex items-center justify-center text-xl mx-auto relative z-10 border-4 border-[#F1F5F9]"><i class="fa-solid fa-mobile-screen-button"></i><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">1</span></div>
+        <h3 class="font-bold mt-4">Book Online / Call Us</h3>
+        <p class="text-sm text-slate-500 mt-1">Call 99999 99999 or book on website/WhatsApp in 30 seconds. Select CCTV or AC.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs font-semibold bg-slate-900 text-white px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp text-emerald-400"></i> Or WhatsApp: 99999 99999</div>
+      </div>
+      <div class="bg-white rounded-[20px] p-6 text-center border border-slate-100 relative">
+        <div class="w-16 h-16 rounded-2xl bg-navy-900 text-white flex items-center justify-center text-xl mx-auto relative z-10 border-4 border-[#F1F5F9]"><i class="fa-solid fa-motorcycle"></i><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">2</span></div>
+        <h3 class="font-bold mt-4">Technician Visits Your Location</h3>
+        <p class="text-sm text-slate-500 mt-1">Verified expert reaches in 90 mins with all tools & original spares. Free inspection.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs font-semibold bg-blue-50 text-navy-700 px-3 py-1.5 rounded-full"><i class="fa-solid fa-clock"></i> Track live location</div>
+      </div>
+      <div class="bg-white rounded-[20px] p-6 text-center border border-slate-100 relative">
+        <div class="w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl mx-auto relative z-10 border-4 border-[#F1F5F9]"><i class="fa-solid fa-circle-check"></i><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">3</span></div>
+        <h3 class="font-bold mt-4">Get It Fixed with Warranty</h3>
+        <p class="text-sm text-slate-500 mt-1">Clean work, testing demo & GST bill. Pay after satisfaction + warranty card.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs font-semibold bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full"><i class="fa-solid fa-shield-halved"></i> Up to 12 Months Warranty</div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-8">
+      <button onclick="openModal()" class="bg-accent hover:bg-accent-hover text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2">Book Your Technician Now <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-10 lg:py-14 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="inline-flex items-center gap-2 bg-orange-50 text-accent border border-orange-100 px-3 py-1 rounded-full text-xs font-bold tracking-widest">TRANSPARENT PRICING</span>
+      <h2 class="font-jakarta font-extrabold text-[28px] md:text-[36px] text-navy-900 mt-3">Packages Built for <span class="text-accent">Delhi NCR Homes & Shops</span></h2>
+      <p class="text-sm text-slate-500 mt-2">No hidden costs. All prices include labour + visiting charge. Spare parts extra if needed.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 mt-8">
+      <!-- CCTV Pack -->
+      <div class="rounded-[24px] border border-slate-200 p-6 bg-white flex flex-col">
+        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-navy-900 text-white flex items-center justify-center"><i class="fa-solid fa-video"></i></div><div><div class="font-bold leading-none">CCTV Starter Kit</div><div class="text-xs text-slate-500">For 2BHK / Shop</div></div></div>
+        <div class="mt-5"><span class="text-3xl font-extrabold text-navy-900">₹9,999</span> <span class="text-sm text-slate-500 line-through">₹14,999</span> <span class="ml-2 bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-1 rounded-full">Save 33%</span></div>
+        <ul class="mt-5 space-y-2.5 text-sm flex-1">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 2x HD 2MP Cameras (Dome + Bullet)</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 4-Channel DVR + 500GB HDD</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Mobile App + 20m Wire / Camera</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Installation + 1 Year Warranty</li>
+        </ul>
+        <button onclick="openModal()" class="mt-6 w-full border border-navy-900 text-navy-900 font-bold py-3 rounded-full hover:bg-navy-900 hover:text-white transition">Get This Package</button>
+        <div class="text-[11px] text-center text-slate-400 mt-2">Ideal for Home & Small Shop</div>
+      </div>
+
+      <!-- Popular -->
+      <div class="rounded-[24px] border-2 border-accent p-[1px] bg-gradient-to-b from-orange-100 to-white shadow-xl scale-[1.02]">
+        <div class="bg-white rounded-[22px] p-6 flex flex-col h-full">
+          <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center"><i class="fa-solid fa-snowflake"></i></div><div><div class="font-bold leading-none">AC + CCTV Combo</div><div class="text-xs text-slate-500">Most Booked in Delhi NCR</div></div></div><span class="bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full">POPULAR</span></div>
+          <div class="mt-5"><span class="text-3xl font-extrabold text-navy-900">₹3,499</span> <span class="text-sm text-slate-500">/ year</span> <span class="ml-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full">AMC</span></div>
+          <ul class="mt-5 space-y-2.5 text-sm flex-1">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 4 Jet Pump AC Services (2 ACs)</li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 2 CCTV Health Checkups + Cleaning</li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Unlimited Breakdown Visits (Free Labour)</li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Priority 60-min Response</li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Spare Parts at Dealer Price</li>
+          </ul>
+          <button onclick="openModal()" class="mt-6 w-full bg-accent hover:bg-accent-hover text-white font-bold py-3 rounded-full">Choose AMC Plan →</button>
+          <div class="text-[11px] text-center text-slate-500 mt-2">For 2 ACs + 4 CCTV • Save ₹5,000/year</div>
+        </div>
+      </div>
+
+      <!-- AC Pack -->
+      <div class="rounded-[24px] border border-slate-200 p-6 bg-white flex flex-col">
+        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center"><i class="fa-solid fa-wind"></i></div><div><div class="font-bold leading-none">AC Complete Care</div><div class="text-xs text-slate-500">For 1.5 Ton Split AC</div></div></div>
+        <div class="mt-5"><span class="text-3xl font-extrabold text-navy-900">₹399</span> <span class="text-sm text-slate-500">onwards</span></div>
+        <ul class="mt-5 space-y-2.5 text-sm flex-1">
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Jet Pump Foam Service (30 mins)</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Gas Checking + Filter Cleaning</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Cooling Test + Performance Report</li>
+          <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 30 Days Service Warranty</li>
+        </ul>
+        <button onclick="openModal()" class="mt-6 w-full border border-slate-200 font-bold py-3 rounded-full hover:bg-slate-900 hover:text-white transition">Book AC Service</button>
+        <div class="text-[11px] text-center text-slate-400 mt-2">Same day service in Gurgaon & Noida</div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <span class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-circle-info text-navy-700"></i> Need custom quote for Society / Office / Warehouse?</span>
+      <a href="#contact" class="inline-flex items-center gap-2 bg-navy-900 text-white px-4 py-2 rounded-full font-bold text-sm">Get Free Survey <i class="fa-solid fa-arrow-right text-xs"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF: Before/After & Testimonials -->
+<section class="py-10 lg:py-14 bg-[#F8FAFC]">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      <!-- Before After -->
+      <div>
+        <span class="inline-flex items-center gap-2 bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest">BEFORE vs AFTER</span>
+        <h3 class="font-jakarta font-extrabold text-2xl text-navy-900 mt-3">We Fix Messy Wiring Into <span class="text-accent">Neat & Professional</span></h3>
+        <p class="text-sm text-slate-500 mt-2">Drag the slider to see the difference between local work and SecureCool's proper installation.</p>
+
+        <div id="baContainer" class="before-after-container rounded-[20px] overflow-hidden mt-5 h-[340px] bg-slate-200">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=900&auto=format&fit=crop" class="w-full h-full object-cover" alt="after">
+          <div id="baBefore" class="before-img">
+            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=900&auto=format&fit=crop" class="w-full h-[340px] object-cover" style="width:900px; max-width:none" alt="before">
+            <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">BEFORE: Messy & Unsafe</span>
+          </div>
+          <span class="absolute top-3 right-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">AFTER: SecureCool Neat</span>
+          <div id="baHandle" class="slider-handle"><i class="fa-solid fa-arrows-left-right text-slate-600"></i></div>
+          <input id="baRange" type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize">
+        </div>
+        <div class="flex gap-3 mt-3 text-xs">
+          <span class="flex items-center gap-1 bg-red-50 text-red-600 px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-xmark"></i> Open Wires • No Casing</span>
+          <span class="flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-check"></i> PVC Casing • Concealed</span>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div>
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="inline-flex items-center gap-2 bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest">REAL CUSTOMER LOVE</span>
+            <h3 class="font-jakarta font-extrabold text-2xl text-navy-900 mt-2">Trusted by Delhi NCR Families</h3>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-1.5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-5 h-5">
+            <span class="text-sm font-bold">4.9/5</span><span class="text-xs text-slate-500">2,847 reviews</span>
+          </div>
+        </div>
+
+        <div class="relative mt-5">
+          <div id="testimonialTrack" class="overflow-hidden rounded-[20px]">
+            <div id="testimonialInner" class="flex transition-transform duration-500" style="transform:translateX(0)">
+              <!-- Slide 1 -->
+              <div class="min-w-full bg-white p-6 border border-slate-100">
+                <div class="flex items-center gap-1 text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-2 text-slate-600 font-semibold text-xs">5.0 • Google Review</span></div>
+                <p class="text-[15px] leading-relaxed mt-3">“Got 4 CCTV installed in my 3BHK in Dwarka. Wiring is so neat, even my wife appreciated! Technician explained mobile app very patiently. Highly professional team.”</p>
+                <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=32" class="w-10 h-10 rounded-full"><div><div class="font-bold text-sm">Rohit Sharma</div><div class="text-xs text-slate-500">Homeowner • Dwarka, Delhi</div></div><span class="ml-auto bg-blue-50 text-navy-700 text-xs font-bold px-3 py-1 rounded-full">CCTV Installation</span></div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="min-w-full bg-white p-6 border border-slate-100">
+                <div class="flex items-center gap-1 text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-2 text-slate-600 font-semibold text-xs">5.0 • Justdial</span></div>
+                <p class="text-[15px] leading-relaxed mt-3">“My AC was not cooling in Gurgaon office. They refilled gas and serviced in 45 mins. Gave bill + warranty card. No extra charges. Saved my day!”</p>
+                <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=26" class="w-10 h-10 rounded-full"><div><div class="font-bold text-sm">Priya Malhotra</div><div class="text-xs text-slate-500">Office Owner • Cyber City, Gurugram</div></div><span class="ml-auto bg-cyan-50 text-cyan-700 text-xs font-bold px-3 py-1 rounded-full">AC Gas Charging</span></div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="min-w-full bg-white p-6 border border-slate-100">
+                <div class="flex items-center gap-1 text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-2 text-slate-600 font-semibold text-xs">5.0 • Google Review</span></div>
+                <p class="text-[15px] leading-relaxed mt-3">“Took AMC for our warehouse in Noida (12 cameras + 6 ACs). 6 months, 3 breakdown visits already — all free. Best decision for business!”</p>
+                <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=53" class="w-10 h-10 rounded-full"><div><div class="font-bold text-sm">Amit Jain</div><div class="text-xs text-slate-500">Warehouse • Sector 62, Noida</div></div><span class="ml-auto bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">AMC Service</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <div class="flex gap-2" id="dots">
+              <button onclick="goTestimonial(0)" class="w-8 h-2 rounded-full bg-navy-900 dot"></button>
+              <button onclick="goTestimonial(1)" class="w-2 h-2 rounded-full bg-slate-300 dot"></button>
+              <button onclick="goTestimonial(2)" class="w-2 h-2 rounded-full bg-slate-300 dot"></button>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="prevTestimonial()" class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+              <button onclick="nextTestimonial()" class="w-8 h-8 rounded-full bg-navy-900 text-white flex items-center justify-center hover:bg-slate-800"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini stats -->
+        <div class="grid grid-cols-3 gap-3 mt-5">
+          <div class="bg-white border border-slate-100 rounded-2xl p-4 text-center"><div class="font-extrabold text-xl text-navy-900">98%</div><div class="text-xs text-slate-500">On-Time Arrival</div></div>
+          <div class="bg-white border border-slate-100 rounded-2xl p-4 text-center"><div class="font-extrabold text-xl text-navy-900">4.9★</div><div class="text-xs text-slate-500">Average Rating</div></div>
+          <div class="bg-white border border-slate-100 rounded-2xl p-4 text-center"><div class="font-extrabold text-xl text-navy-900">15K+</div><div class="text-xs text-slate-500">Services Done</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="py-10 lg:py-14 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-slate-900 text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">OUR WORK • GALLERY</span>
+        <h2 class="font-jakarta font-extrabold text-[28px] md:text-[30px] text-navy-900 mt-3">Neat Work Speaks Louder Than Words</h2>
+      </div>
+      <div class="flex gap-2 text-sm">
+        <button onclick="filterGallery('all')" class="filterBtn active bg-navy-900 text-white px-4 py-2 rounded-full font-bold" data-f="all">All</button>
+        <button onclick="filterGallery('cctv')" class="filterBtn bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full font-bold" data-f="cctv">CCTV</button>
+        <button onclick="filterGallery('ac')" class="filterBtn bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full font-bold" data-f="ac">AC</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px]" data-cat="cctv">
+        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white"><div class="text-xs bg-white/20 backdrop-blur inline-flex px-2 py-1 rounded-full">CCTV • Connaught Place</div><div class="font-bold text-sm mt-1">8-Camera Setup for Showroom</div></div>
+      </div>
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px]" data-cat="ac">
+        <img src="https://images.unsplash.com/photo-1631541909061-71e349d1f203?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white"><div class="text-xs bg-white/20 backdrop-blur inline-flex px-2 py-1 rounded-full">AC • Gurugram</div><div class="font-bold text-sm mt-1">Cassette AC Installation - Office</div></div>
+      </div>
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px]" data-cat="cctv">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white"><div class="text-xs bg-white/20 backdrop-blur inline-flex px-2 py-1 rounded-full">CCTV • Noida Society</div><div class="font-bold text-sm mt-1">32 Cameras • Gated Community</div></div>
+      </div>
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px]" data-cat="ac">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white"><div class="text-xs bg-white/20 backdrop-blur inline-flex px-2 py-1 rounded-full">AC • South Delhi</div><div class="font-bold text-sm mt-1">Jet Service • 5 Star Cooling Restored</div></div>
+      </div>
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px]" data-cat="cctv">
+        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white"><div class="text-xs bg-white/20 backdrop-blur inline-flex px-2 py-1 rounded-full">CCTV • Warehouse</div><div class="font-bold text-sm mt-1">Night Vision Demo - Faridabad</div></div>
+      </div>
+      <div class="gallery-item group relative rounded-[20px] overflow-hidden h-[220px] flex items-center justify-center bg-slate-900 text-white p-6 text-center" data-cat="all">
+        <div><div class="text-3xl font-extrabold">500+</div><div class="text-sm text-white/70">Projects Completed</div><button onclick="openModal()" class="mt-3 bg-accent px-5 py-2 rounded-full font-bold text-sm">View More Work →</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS & MAP (Local SEO) -->
+<section class="py-10 lg:py-14 bg-[#F8FAFC]">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="bg-white rounded-[24px] border border-slate-100 p-6">
+        <span class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full text-xs font-bold tracking-widest"><i class="fa-solid fa-location-dot"></i> WE COVER ENTIRE DELHI NCR</span>
+        <h3 class="font-jakarta font-extrabold text-2xl text-navy-900 mt-3">Local Experts, <span class="text-accent">Fast Reach</span> Everywhere</h3>
+        <p class="text-sm text-slate-500 mt-2">Search “CCTV installation near me” or “AC repair near me” — we are in your neighbourhood. Local teams for faster response & local SEO keywords to help you find us.</p>
+
+        <div class="grid grid-cols-2 gap-3 mt-5 text-sm">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="font-bold text-navy-900 flex items-center gap-2"><i class="fa-solid fa-building text-accent"></i> Delhi</div>
+            <div class="text-xs text-slate-500 mt-1 leading-relaxed">South Delhi, Dwarka, Rohini, Karol Bagh, Lajpat Nagar, Saket, Connaught Place, Shahdara</div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="font-bold text-navy-900 flex items-center gap-2"><i class="fa-solid fa-city text-cyan-600"></i> Gurugram</div>
+            <div class="text-xs text-slate-500 mt-1 leading-relaxed">DLF, Cyber City, Sohna Road, Manesar, Golf Course Road, Sector 49, 56</div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="font-bold text-navy-900 flex items-center gap-2"><i class="fa-solid fa-tower-observation text-violet-600"></i> Noida & Ghaziabad</div>
+            <div class="text-xs text-slate-500 mt-1 leading-relaxed">Sector 18, 62, 150, Indirapuram, Vaishali, Kaushambi, Crossing Republik</div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+            <div class="font-bold text-navy-900 flex items-center gap-2"><i class="fa-solid fa-industry text-emerald-600"></i> Faridabad</div>
+            <div class="text-xs text-slate-500 mt-1 leading-relaxed">Ballabgarh, NIT, Greenfields, Sector 15, 16, Neelam Chowk</div>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold">
+          <span class="bg-white border border-slate-200 px-3 py-1.5 rounded-full">CCTV Installation in Delhi</span>
+          <span class="bg-white border border-slate-200 px-3 py-1.5 rounded-full">AC Repair in Gurgaon</span>
+          <span class="bg-white border border-slate-200 px-3 py-1.5 rounded-full">AC Gas Charging Noida</span>
+          <span class="bg-white border border-slate-200 px-3 py-1.5 rounded-full">CCTV AMC Faridabad</span>
+          <span class="bg-white border border-slate-200 px-3 py-1.5 rounded-full">AC Service Ghaziabad</span>
+        </div>
+        <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex gap-2"><i class="fa-solid fa-lightbulb text-amber-600 mt-0.5"></i><span><b>SEO Tip for Owner:</b> Add Google Business Profile posts weekly with these area keywords + embed this map + collect reviews with “Delhi NCR” location.</span></div>
+      </div>
+
+      <div class="bg-white rounded-[24px] border border-slate-100 overflow-hidden flex flex-col">
+        <div class="h-[340px] w-full bg-slate-100 relative">
+          <iframe class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.89796598367!2d77.04417!3d28.52755445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce26d7b4b3b07%3A0x6b1b1b1b1b1b1b1b!2sDelhi%20NCR!5e0!3m2!1sen!2sin!4v1700000000000"></iframe>
+          <div class="absolute bottom-3 left-3 right-3 bg-white rounded-xl p-3 flex items-center justify-between shadow-lg">
+            <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-navy-900 text-white flex items-center justify-center"><i class="fa-solid fa-location-dot text-xs"></i></div><div><div class="text-sm font-bold leading-none">SecureCool Head Office</div><div class="text-xs text-slate-500">Lajpat Nagar, New Delhi - 110024</div></div></div>
+            <a href="https://maps.google.com/?q=Delhi+NCR" target="_blank" class="bg-accent text-white text-xs font-bold px-3 py-2 rounded-full">Get Directions</a>
+          </div>
+        </div>
+        <div class="p-4 grid grid-cols-3 gap-3 text-center text-xs">
+          <div class="bg-slate-50 rounded-xl py-3"><div class="font-bold text-navy-900">90 Mins</div><div class="text-slate-500">Avg. Reach Time</div></div>
+          <div class="bg-slate-50 rounded-xl py-3"><div class="font-bold text-navy-900">50+ Techs</div><div class="text-slate-500">On Ground</div></div>
+          <div class="bg-slate-50 rounded-xl py-3"><div class="font-bold text-emerald-600">Open 24/7</div><div class="text-slate-500">365 Days</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-10 lg:py-14 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="bg-navy-900 rounded-[24px] p-6 md:p-8 text-white relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-3 py-1 rounded-full text-xs font-bold tracking-widest">CONTACT US</span>
+        <h3 class="font-jakarta font-extrabold text-2xl mt-3">Book a Technician in 30 Seconds</h3>
+        <p class="text-white/70 text-sm mt-1">Fill the form, we’ll call you back in 5 minutes. Or talk directly to our support team.</p>
+
+        <form id="contactForm" class="mt-6 space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <input required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none">
+            <input required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <select class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 text-sm focus:outline-none">
+              <option>CCTV - New Installation</option>
+              <option>CCTV - Repair</option>
+              <option>CCTV - AMC</option>
+              <option>AC - Installation</option>
+              <option>AC - Repair & Gas</option>
+              <option>AC - Deep Cleaning</option>
+            </select>
+            <input placeholder="Area (e.g., Dwarka)" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none">
+          </div>
+          <textarea placeholder="Tell us your requirement..." rows="3" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none"></textarea>
+          <button type="submit" class="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl">Get Free Quote on WhatsApp →</button>
+          <p class="text-[11px] text-white/60 text-center">By submitting, you agree to our Terms & Privacy Policy. No spam, ever.</p>
+        </form>
+
+        <div class="grid grid-cols-3 gap-3 mt-6 text-center">
+          <a href="tel:+919999999999" class="bg-white/10 border border-white/15 rounded-xl py-3 hover:bg-white/15 transition"><i class="fa-solid fa-phone"></i><div class="text-xs font-bold mt-1">Call Now</div><div class="text-[11px] text-white/70">99999 99999</div></a>
+          <a href="https://wa.me/919999999999" target="_blank" class="bg-emerald-500 rounded-xl py-3 hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i><div class="text-xs font-bold mt-1">WhatsApp</div><div class="text-[11px] text-white/90">Instant Reply</div></a>
+          <a href="mailto:care@securecool.in" class="bg-white/10 border border-white/15 rounded-xl py-3 hover:bg-white/15 transition"><i class="fa-regular fa-envelope"></i><div class="text-xs font-bold mt-1">Email Us</div><div class="text-[11px] text-white/70">care@secure.cool</div></a>
+        </div>
+      </div>
+
+      <div class="bg-[#F8FAFC] rounded-[24px] border border-slate-100 p-6">
+        <h4 class="font-jakarta font-extrabold text-lg text-navy-900">Visit Our Experience Centre</h4>
+        <div class="mt-4 space-y-4 text-sm">
+          <div class="flex gap-3"><div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-navy-700"><i class="fa-solid fa-location-dot"></i></div><div><div class="font-bold">Head Office - Lajpat Nagar</div><div class="text-slate-500">A-45, Lajpat Nagar - II, New Delhi - 110024 (Near Metro Station)</div><div class="text-xs text-emerald-600 font-semibold mt-1">● Open Now • 8 AM - 9 PM</div></div></div>
+          <div class="flex gap-3"><div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-navy-700"><i class="fa-solid fa-clock"></i></div><div><div class="font-bold">Working Hours</div><div class="text-slate-500">Mon - Sun: 8:00 AM - 9:00 PM • Emergency: 24/7</div></div></div>
+          <div class="flex gap-3"><div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-navy-700"><i class="fa-solid fa-shield-halved"></i></div><div><div class="font-bold">Why Visit?</div><div class="text-slate-500">Live CCTV demo wall + AC cut-section + Spare parts display. Touch & feel before you buy.</div></div></div>
+        </div>
+        <div class="mt-6 rounded-xl overflow-hidden border border-slate-200 h-[220px] bg-white">
+          <iframe class="w-full h-full border-0" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.5!2d77.24!3d28.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLajpat%20Nagar%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000"></iframe>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-white border border-slate-200 rounded-xl p-3 flex items-center gap-2"><i class="fa-solid fa-file-invoice text-accent"></i> GST Invoice Provided</div>
+          <div class="bg-white border border-slate-200 rounded-xl p-3 flex items-center gap-2"><i class="fa-solid fa-award text-amber-500"></i> 12 Yrs • 10K+ Clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-8 bg-white border-t border-slate-100">
+  <div class="max-w-[900px] mx-auto px-4">
+    <h3 class="font-jakarta font-extrabold text-xl text-center text-navy-900">Frequently Asked Questions</h3>
+    <div class="mt-6 space-y-3">
+      <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-4 open:bg-white">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold list-none">How fast can you reach in Delhi NCR? <span class="w-7 h-7 rounded-full bg-navy-900 text-white flex items-center justify-center text-xs group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span></summary>
+        <p class="text-sm text-slate-600 mt-3">We have local teams in Delhi, Noida, Gurugram, Faridabad & Ghaziabad. Average arrival is 60-90 minutes, emergency in 45 minutes.</p>
+      </details>
+      <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-4 open:bg-white">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold list-none">Do you provide warranty on installation? <span class="w-7 h-7 rounded-full bg-navy-900 text-white flex items-center justify-center text-xs group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span></summary>
+        <p class="text-sm text-slate-600 mt-3">Yes. CCTV: 1 year on DVR/cameras + 6 months on service. AC: 6 months on repair & 30 days on service. AMC covers unlimited visits.</p>
+      </details>
+      <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-4 open:bg-white">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold list-none">Which CCTV/AC brands do you deal in? <span class="w-7 h-7 rounded-full bg-navy-900 text-white flex items-center justify-center text-xs group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span></summary>
+        <p class="text-sm text-slate-600 mt-3">CCTV: Hikvision, Dahua, CP Plus, Honeywell. AC: Daikin, Mitsubishi, LG, Voltas, Blue Star, Carrier, Samsung — all brands serviced.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy-900 text-white">
+  <div class="max-w-[1280px] mx-auto px-4 py-10">
+    <div class="grid lg:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white text-navy-900 flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></div>
+          <div><div class="font-jakarta font-extrabold leading-none">SecureCool.</div><div class="text-[11px] tracking-widest text-white/60">DELHI NCR • SINCE 2012</div></div>
+        </div>
+        <p class="text-sm text-white/70 mt-4 leading-relaxed">Delhi NCR’s most trusted CCTV & AC service partner. We secure your premises and keep you cool — with proper work, honest pricing & lifetime support.</p>
+        <div class="flex gap-2 mt-4">
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-youtube text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+        </div>
+        <div class="mt-4 inline-flex items-center gap-2 bg-white text-navy-900 px-3 py-1.5 rounded-full text-xs font-bold"><i class="fa-solid fa-star text-amber-500"></i> 4.9/5 on Google • 2,847 Reviews</div>
+      </div>
+
+      <div>
+        <div class="font-bold">Quick Links</div>
+        <ul class="mt-3 space-y-2 text-sm text-white/70">
+          <li><a href="#home" class="hover:text-white">Home</a></li>
+          <li><a href="#about" class="hover:text-white">About Us</a></li>
+          <li><a href="#services" class="hover:text-white">CCTV Services</a></li>
+          <li><a href="#services" class="hover:text-white">AC Services</a></li>
+          <li><a href="#pricing" class="hover:text-white">Pricing / AMC Packages</a></li>
+          <li><a href="#gallery" class="hover:text-white">Gallery / Our Work</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-bold">Areas We Serve (Local SEO)</div>
+        <ul class="mt-3 space-y-2 text-sm text-white/70">
+          <li>CCTV Installation in South Delhi</li>
+          <li>AC Repair in Gurugram & Manesar</li>
+          <li>CCTV AMC in Noida & Greater Noida</li>
+          <li>AC Installation in Ghaziabad</li>
+          <li>AC Gas Charging in Faridabad</li>
+          <li>Warehouse CCTV - Delhi NCR</li>
+        </ul>
+        <div class="mt-4 bg-white/10 border border-white/15 rounded-xl p-3 text-xs leading-relaxed">
+          <b class="text-white">SEO Blueprint Included:</b> Schema (LocalBusiness), GMB, City pages, Internal linking with area keywords, FAQs with “near me” phrases.
+        </div>
+      </div>
+
+      <div>
+        <div class="font-bold">Contact Details</div>
+        <div class="mt-3 space-y-3 text-sm">
+          <div class="flex gap-3"><i class="fa-solid fa-location-dot text-accent mt-1"></i><span class="text-white/80">A-45, Lajpat Nagar-II, New Delhi - 110024<br><span class="text-white/50">Branch: Noida Sec 62 • Gurugram Sohna Rd</span></span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-phone text-accent mt-1"></i><a href="tel:+919999999999" class="hover:text-white">+91 99999 99999 (24/7)</a></div>
+          <div class="flex gap-3"><i class="fa-regular fa-envelope text-accent mt-1"></i><a href="mailto:care@securecool.in" class="hover:text-white">care@securecool.in</a></div>
+          <div class="bg-white rounded-xl p-3 flex items-center justify-between">
+            <span class="text-navy-900 font-bold text-sm">Get Free Site Survey</span>
+            <button onclick="openModal()" class="bg-accent text-white px-4 py-2 rounded-full font-bold text-sm">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+      <span>© 2025 SecureCool Delhi NCR. All Rights Reserved. • GSTIN: 07ABCDE1234F1Z5 • MSME Registered</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-white">Privacy Policy</a> <a href="#" class="hover:text-white">Terms</a> <a href="#" class="hover:text-white">Refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp & Call -->
+<div class="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+  <a href="https://wa.me/919999999999?text=Hi%20SecureCool%2C%20I%20need%20CCTV%2FAC%20service%20in%20Delhi%20NCR" target="_blank" class="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-105 transition relative">
+    <i class="fa-brands fa-whatsapp text-xl"></i><span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+  </a>
+  <a href="tel:+919999999999" class="w-12 h-12 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-xl hover:scale-105 transition"><i class="fa-solid fa-phone"></i></a>
+</div>
+
+<!-- Sticky Mobile CTA -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white border-t border-slate-200 p-3 flex gap-3">
+  <a href="tel:+919999999999" class="flex-1 bg-white border border-slate-200 font-bold py-3 rounded-full text-center">Call Now</a>
+  <button onclick="openModal()" class="flex-1 bg-accent text-white font-bold py-3 rounded-full">Book Technician</button>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-[24px] w-full max-w-[520px] overflow-hidden shadow-2xl">
+      <div class="bg-navy-900 text-white p-6 flex items-start justify-between">
+        <div><div class="inline-flex items-center gap-2 bg-white/15 border border-white/20 px-3 py-1 rounded-full text-xs font-bold">⚡ 5-MIN CALLBACK GUARANTEE</div><h3 class="font-jakarta font-extrabold text-xl mt-3">Book Your Technician Today</h3><p class="text-white/70 text-sm">Free site survey • No visiting charge if service taken</p></div>
+        <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center hover:bg-white/25"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="modalForm" class="p-6 space-y-3">
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-xs font-bold text-slate-600">Full Name *</label><input required placeholder="Rahul Sharma" class="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm"></div>
+          <div><label class="text-xs font-bold text-slate-600">Phone *</label><input required placeholder="98XXXXXXXX" pattern="[0-9]{10}" class="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm"></div>
+        </div>
+        <div><label class="text-xs font-bold text-slate-600">Service Needed</label><select class="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm"><option>CCTV - New Installation</option><option>CCTV - Repair</option><option>CCTV - AMC</option><option>AC - Installation</option><option>AC - Repair & Gas Charging</option><option>AC - Deep Cleaning</option><option>Combo AMC</option></select></div>
+        <div><label class="text-xs font-bold text-slate-600">Area in Delhi NCR</label><input placeholder="e.g., Dwarka, Noida Sec 62" class="mt-1 w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm"></div>
+        <button type="submit" class="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl">Get Free Quote on WhatsApp →</button>
+        <div class="flex items-center justify-center gap-4 text-xs text-slate-500"><span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-emerald-500"></i> 100% Safe</span><span class="flex items-center gap-1"><i class="fa-solid fa-clock text-navy-700"></i> Callback in 5 mins</span><span class="flex items-center gap-1"><i class="fa-solid fa-badge-check text-accent"></i> No Spam</span></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-50 hidden">
+  <div class="bg-navy-900 text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3 text-sm font-semibold"><i class="fa-solid fa-circle-check text-emerald-400"></i><span id="toastMsg">Request sent! We’ll call you in 5 minutes.</span></div>
+</div>
+
+<script>
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'))
+
+// Service tabs
+function switchService(which){
+  const cctvBtn=document.getElementById('tabCCTV'), acBtn=document.getElementById('tabAC')
+  const gridC=document.getElementById('gridCCTV'), gridA=document.getElementById('gridAC')
+  if(which==='cctv'){
+    cctvBtn.className='px-6 py-2.5 rounded-full font-bold text-sm bg-white text-navy-900 shadow'
+    acBtn.className='px-6 py-2.5 rounded-full font-bold text-sm text-white/80 hover:text-white'
+    gridC.classList.remove('hidden'); gridC.classList.add('grid')
+    gridA.classList.add('hidden'); gridA.classList.remove('grid')
+  }else{
+    acBtn.className='px-6 py-2.5 rounded-full font-bold text-sm bg-white text-navy-900 shadow'
+    cctvBtn.className='px-6 py-2.5 rounded-full font-bold text-sm text-white/80 hover:text-white'
+    gridA.classList.remove('hidden'); gridA.classList.add('grid')
+    gridC.classList.add('hidden'); gridC.classList.remove('grid')
+  }
+}
+
+// Testimonials
+let tIndex=0
+function updateTestimonial(){
+  document.getElementById('testimonialInner').style.transform=`translateX(-${tIndex*100}%)`
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.className = i===tIndex ? 'w-8 h-2 rounded-full bg-navy-900 dot' : 'w-2 h-2 rounded-full bg-slate-300 dot'
+  })
+}
+function nextTestimonial(){ tIndex=(tIndex+1)%3; updateTestimonial()}
+function prevTestimonial(){ tIndex=(tIndex-1+3)%3; updateTestimonial()}
+function goTestimonial(i){ tIndex=i; updateTestimonial()}
+setInterval(nextTestimonial,4000)
+
+// Before After
+const range=document.getElementById('baRange'), before=document.getElementById('baBefore'), handle=document.getElementById('baHandle')
+function setBA(v){
+  before.style.width=v+'%'
+  handle.style.left=v+'%'
+}
+range.addEventListener('input',e=>setBA(e.target.value))
+setBA(50)
+let dragging=false
+handle.addEventListener('mousedown',()=>dragging=true)
+window.addEventListener('mouseup',()=>dragging=false)
+document.getElementById('baContainer').addEventListener('mousemove',e=>{
+  if(!dragging) return
+  const rect=e.currentTarget.getBoundingClientRect()
+  const pct=((e.clientX-rect.left)/rect.width)*100
+  const clamped=Math.max(5,Math.min(95,pct))
+  range.value=clamped; setBA(clamped)
+})
+// touch
+handle.addEventListener('touchstart',()=>dragging=true)
+window.addEventListener('touchend',()=>dragging=false)
+document.getElementById('baContainer').addEventListener('touchmove',e=>{
+  if(!dragging) return
+  const rect=e.currentTarget.getBoundingClientRect()
+  const pct=((e.touches[0].clientX-rect.left)/rect.width)*100
+  const clamped=Math.max(5,Math.min(95,pct))
+  range.value=clamped; setBA(clamped)
+})
+
+// Gallery filter
+function filterGallery(cat){
+  document.querySelectorAll('.filterBtn').forEach(b=>{
+    b.classList.remove('bg-navy-900','text-white','active')
+    b.classList.add('bg-slate-100')
+    if(b.dataset.f===cat){ b.classList.add('bg-navy-900','text-white'); b.classList.remove('bg-slate-100') }
+  })
+  document.querySelectorAll('.gallery-item').forEach(el=>{
+    if(cat==='all') el.style.display=''
+    else el.style.display = el.dataset.cat===cat ? '' : 'none'
+    if(el.dataset.cat==='all' && cat!=='all') el.style.display='none'
+    if(cat==='all' && el.dataset.cat==='all') el.style.display=''
+  })
+}
+
+// Modal
+function openModal(){ document.getElementById('modal').classList.remove('hidden'); document.body.style.overflow='hidden' }
+function closeModal(){ document.getElementById('modal').classList.add('hidden'); document.body.style.overflow='' }
+
+// Forms -> toast + whatsapp
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg
+  const t=document.getElementById('toast'); t.classList.remove('hidden')
+  setTimeout(()=>t.classList.add('hidden'),3000)
+}
+document.getElementById('quickBookForm').addEventListener('submit',e=>{
+  e.preventDefault(); showToast('✅ Availability checked! We’ll call you in 5 minutes.')
+  e.target.reset()
+})
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault(); showToast('✅ Quote request sent on WhatsApp!')
+  window.open('https://wa.me/919999999999?text=Hi%20SecureCool%2C%20I%20need%20a%20quote%20for%20CCTV%2FAC%20in%20Delhi%20NCR','_blank')
+})
+document.getElementById('modalForm').addEventListener('submit',e=>{
+  e.preventDefault(); showToast('✅ Technician booked! Expect a call in 5 mins.')
+  closeModal()
+  window.open('https://wa.me/919999999999?text=Hi%20SecureCool%2C%20Please%20book%20a%20technician%20for%20me.','_blank')
+})
+
+// Header shadow on scroll
+window.addEventListener('scroll',()=>{
+  const h=document.getElementById('header')
+  if(window.scrollY>10) h.classList.add('shadow-md'); else h.classList.remove('shadow-md')
+})
+</script>
+
+<!-- LocalBusiness Schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"SecureCool Delhi NCR - CCTV & AC Services",
+  "image":"https://images.unsplash.com/photo-1557597774-9d273605dfa9",
+  "address":{"@type":"PostalAddress","addressLocality":"New Delhi","addressRegion":"Delhi NCR","addressCountry":"IN"},
+  "areaServed":["Delhi","Noida","Gurugram","Faridabad","Ghaziabad"],
+  "telephone":"+919999999999",
+  "priceRange":"₹₹",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"2847"}
+}
+</script>
+</body>
+</html>
