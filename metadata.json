@@ -1,0 +1,6 @@
+{
+  "name": "SmartCool Security Services",
+  "description": "Delhi NCR's Most Trusted CCTV & AC Service. Expert Installation, Repair, Gas Charging & AMC for Homes, Offices & Societies. 24/7 Support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

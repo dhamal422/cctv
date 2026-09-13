@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function() {
+  try {
+    var _fetch = window.fetch;
+    Object.defineProperty(window, 'fetch', {
+      get: function() { return _fetch; },
+      set: function(fn) { _fetch = fn; },
+      configurable: true,
+      enumerable: true
+    });
+  } catch(e) {}
+})();
+</script>
+<title>Admin Dashboard | SmartCool Security Services CRM & CMS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{ jakarta:['Plus Jakarta Sans','sans-serif'], inter:['Inter','sans-serif']},
+      colors:{
+        navy:{900:'#0A1931',800:'#0F2440',700:'#162B4D',600:'#1E3A6D'},
+        accent:{DEFAULT:'#FF6B2C',hover:'#E85E24'}
+      }
+    }
+  }
+}
+</script>
+<style>
+body{font-family:'Inter',sans-serif}
+.font-jakarta{font-family:'Plus Jakarta Sans',sans-serif}
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+
+<!-- LOGIN SCREEN (Shown if unauthenticated) -->
+<div id="loginScreen" class="fixed inset-0 z-50 bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 border border-slate-100">
+    <div class="text-center">
+      <div class="w-14 h-14 rounded-2xl bg-navy-900 text-white flex items-center justify-center text-2xl mx-auto mb-3 shadow-lg shadow-navy-900/30">
+        <i class="fa-solid fa-shield-halved text-accent"></i>
+      </div>
+      <h1 class="font-jakarta font-extrabold text-2xl text-navy-900">SmartCool Security Services Admin</h1>
+      <p class="text-slate-500 text-sm mt-1">Management Portal for CCTV & AC Operations</p>
+    </div>
+
+    <form id="loginForm" class="mt-6 space-y-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Username or Email</label>
+        <div class="relative">
+          <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input id="loginUsername" type="text" value="admin" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm font-medium">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Password</label>
+        <div class="relative">
+          <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input id="loginPassword" type="password" value="adminpassword123" required class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-navy-900 focus:outline-none text-sm font-medium">
+        </div>
+      </div>
+      
+      <div id="loginError" class="hidden text-xs text-rose-600 bg-rose-50 border border-rose-200 rounded-lg p-3"></div>
+
+      <button type="submit" class="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-900/20 transition flex items-center justify-center gap-2">
+        <span>Sign In to Dashboard</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+
+      <div class="p-3 bg-slate-100 rounded-xl text-center text-xs text-slate-500">
+        <span class="font-bold text-navy-900">Demo Credentials:</span> admin / adminpassword123
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MAIN DASHBOARD LAYOUT -->
+<div id="dashboardApp" class="hidden min-h-screen flex flex-col lg:flex-row">
+
+  <!-- Sidebar -->
+  <aside class="w-full lg:w-64 bg-navy-900 text-white flex flex-col shrink-0 border-r border-navy-800">
+    <!-- Brand -->
+    <div class="p-5 border-b border-navy-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-accent text-lg font-bold">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <div class="font-jakarta font-extrabold text-base tracking-tight leading-tight">SmartCool Security Services<span class="text-accent">.</span></div>
+          <div class="text-[10px] tracking-widest text-slate-400 font-bold uppercase">Control Panel</div>
+        </div>
+      </div>
+      <a href="/" target="_blank" title="View Live Frontend" class="text-xs bg-white/10 hover:bg-white/20 text-white p-2 rounded-lg transition">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+
+    <!-- Navigation Modules -->
+    <nav class="p-4 space-y-1.5 flex-1">
+      <button onclick="switchTab('leads')" id="nav-leads" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-accent text-white transition">
+        <i class="fa-solid fa-inbox w-5 text-center"></i>
+        <span>Leads CRM</span>
+        <span id="badgeNewLeads" class="ml-auto bg-white/20 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">0</span>
+      </button>
+
+      <button onclick="switchTab('services')" id="nav-services" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition">
+        <i class="fa-solid fa-screwdriver-wrench w-5 text-center"></i>
+        <span>Services & Pricing</span>
+      </button>
+
+      <button onclick="switchTab('testimonials')" id="nav-testimonials" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition">
+        <i class="fa-solid fa-star w-5 text-center"></i>
+        <span>Reviews & Proof</span>
+      </button>
+
+      <button onclick="switchTab('seo')" id="nav-seo" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition">
+        <i class="fa-solid fa-magnifying-glass-location w-5 text-center"></i>
+        <span>Local SEO & Settings</span>
+      </button>
+    </nav>
+
+    <!-- Admin Profile & Logout -->
+    <div class="p-4 border-t border-navy-800 bg-navy-800/40">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center text-accent font-bold text-sm">
+          A
+        </div>
+        <div class="overflow-hidden">
+          <div id="adminUserName" class="text-sm font-bold truncate">Administrator</div>
+          <div class="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Active Session
+          </div>
+        </div>
+      </div>
+      <button onclick="logoutAdmin()" class="w-full bg-white/10 hover:bg-rose-600/80 text-white text-xs font-semibold py-2 rounded-lg transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Sign Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Content Workspace -->
+  <main class="flex-1 flex flex-col overflow-y-auto">
+
+    <!-- Top Status Header -->
+    <header class="bg-white border-b border-slate-200 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h2 id="pageTitle" class="font-jakarta font-extrabold text-xl text-navy-900">Lead & Booking CRM</h2>
+        <p id="pageSubtitle" class="text-slate-500 text-xs mt-0.5">Real-time incoming customer requests from Delhi NCR</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="/api/leads/export.csv" id="exportCsvBtn" download class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition">
+          <i class="fa-solid fa-file-excel"></i>
+          <span>Export CSV</span>
+        </a>
+        <button onclick="refreshData()" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-xl transition">
+          <i class="fa-solid fa-rotate"></i>
+          <span class="hidden sm:inline">Refresh</span>
+        </button>
+        <a href="/" target="_blank" class="inline-flex items-center gap-2 bg-navy-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-navy-800 transition">
+          <i class="fa-solid fa-globe"></i>
+          <span>Open Frontend</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Notification Toast -->
+    <div id="adminToast" class="fixed top-5 right-5 z-50 hidden bg-navy-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs font-semibold">
+      <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+      <span id="adminToastText">Operation successful</span>
+    </div>
+
+    <!-- TAB 1: LEADS CRM -->
+    <div id="tabContent-leads" class="p-6 space-y-6">
+
+      <!-- Metrics Ribbon -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 text-navy-700 flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div>
+            <div id="metricTotalLeads" class="font-jakarta font-extrabold text-2xl text-navy-900">0</div>
+            <div class="text-xs text-slate-500 font-medium">Total Bookings</div>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-hourglass-half"></i>
+          </div>
+          <div>
+            <div id="metricNewLeads" class="font-jakarta font-extrabold text-2xl text-amber-600">0</div>
+            <div class="text-xs text-slate-500 font-medium">Needs Contact</div>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <div>
+            <div id="metricInProgress" class="font-jakarta font-extrabold text-2xl text-purple-600">0</div>
+            <div class="text-xs text-slate-500 font-medium">Technician Active</div>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+          </div>
+          <div>
+            <div id="metricPipelineVal" class="font-jakarta font-extrabold text-2xl text-emerald-600">₹0</div>
+            <div class="text-xs text-slate-500 font-medium">Pipeline Value</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & View Switcher -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+          <div class="relative flex-1 min-w-[200px]">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="leadSearch" oninput="renderLeads()" placeholder="Search name, phone, ref, or locality..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs focus:bg-white focus:border-navy-900 focus:outline-none">
+          </div>
+          <select id="filterStatus" onchange="renderLeads()" class="px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold focus:outline-none">
+            <option value="all">All Statuses</option>
+            <option value="new_lead">New Lead</option>
+            <option value="contacted">Contacted</option>
+            <option value="technician_assigned">Technician Assigned</option>
+            <option value="work_in_progress">Work In Progress</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <select id="filterCategory" onchange="renderLeads()" class="px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold focus:outline-none">
+            <option value="all">All Services</option>
+            <option value="CCTV">CCTV Only</option>
+            <option value="AC">AC Only</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="openNewLeadModal()" class="inline-flex items-center gap-1.5 bg-accent hover:bg-accent-hover text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Booking</span>
+          </button>
+          <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+            <button onclick="setViewMode('split')" id="viewBtn-split" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 shadow">
+              <i class="fa-solid fa-table-columns"></i> Split CRM
+            </button>
+            <button onclick="setViewMode('kanban')" id="viewBtn-kanban" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900">
+              <i class="fa-solid fa-columns"></i> Kanban
+            </button>
+            <button onclick="setViewMode('table')" id="viewBtn-table" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900">
+              <i class="fa-solid fa-list"></i> Table
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KANBAN & MASTER-DETAIL SPLIT CONTAINER (Lead Record Left, Details Right) -->
+      <div id="kanbanContainer" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Injected via JavaScript: Left side = Lead Records, Right side = Lead Details -->
+      </div>
+
+      <!-- TABLE VIEW -->
+      <div id="tableContainer" class="hidden bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-50 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
+              <tr>
+                <th class="px-4 py-3.5">Ref / Date</th>
+                <th class="px-4 py-3.5">Customer</th>
+                <th class="px-4 py-3.5">Service Requested</th>
+                <th class="px-4 py-3.5">Locality / Address</th>
+                <th class="px-4 py-3.5">Amount</th>
+                <th class="px-4 py-3.5">Status</th>
+                <th class="px-4 py-3.5">Technician</th>
+                <th class="px-4 py-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody" class="divide-y divide-slate-100">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SERVICES & PRICING CMS -->
+    <div id="tabContent-services" class="hidden p-6 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="font-jakarta font-extrabold text-lg text-navy-900">Service Catalog & Rates</h3>
+          <p class="text-xs text-slate-500">Update rates and descriptions reflected instantly on the customer site.</p>
+        </div>
+        <button onclick="openServiceModal()" class="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow">
+          <i class="fa-solid fa-plus"></i> Add New Service
+        </button>
+      </div>
+
+      <div id="servicesList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- TAB 3: REVIEWS & PROOF -->
+    <div id="tabContent-testimonials" class="hidden p-6 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="font-jakarta font-extrabold text-lg text-navy-900">Client Reviews & Gallery</h3>
+          <p class="text-xs text-slate-500">Manage social proof, testimonials, and verified customer feedback.</p>
+        </div>
+        <button onclick="openReviewModal()" class="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow">
+          <i class="fa-solid fa-plus"></i> Add Testimonial
+        </button>
+      </div>
+
+      <div id="reviewsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- TAB 4: LOCAL SEO & SITE SETTINGS -->
+    <div id="tabContent-seo" class="hidden p-6 space-y-6 max-w-4xl">
+      <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+        <h3 class="font-jakarta font-extrabold text-lg text-navy-900 mb-1">Business Contact & WhatsApp Configuration</h3>
+        <p class="text-xs text-slate-500 mb-6">These phone numbers and addresses power all frontend click-to-call and WhatsApp buttons.</p>
+
+        <form id="settingsForm" onsubmit="saveSettings(event)" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Direct Call Phone Number</label>
+              <input id="set_phone" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Target Number (Without + or spaces)</label>
+              <input id="set_whatsapp" placeholder="919354304681" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Support Email</label>
+              <input id="set_email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Target Primary City / Region</label>
+              <input id="set_city" placeholder="Delhi NCR" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Physical Business Address</label>
+            <textarea id="set_address" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900"></textarea>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <h4 class="font-jakarta font-bold text-sm text-navy-900 mb-1">Homepage Promo Banner (Seasonal CMS)</h4>
+            <p class="text-xs text-slate-500 mb-3">Dynamically change the main hero headline to run seasonal campaigns.</p>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Hero Title</label>
+                <input id="set_hero_title" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Hero Subtitle</label>
+                <input id="set_hero_subtitle" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <h4 class="font-jakarta font-bold text-sm text-navy-900 mb-1">Local SEO & Meta Settings</h4>
+            <div class="space-y-3 mt-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Global Meta Title (with keyword tokens)</label>
+                <input id="set_meta_title" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Global Meta Description</label>
+                <textarea id="set_meta_desc" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Google Maps Embed URL</label>
+                <input id="set_maps_iframe" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:border-navy-900">
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="bg-accent hover:bg-accent-hover text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Save System & SEO Settings</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- SLIDING LEAD INSPECTION DRAWER -->
+<div id="leadDrawer" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onclick="closeDrawer()"></div>
+  <div class="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-white shadow-2xl flex flex-col z-10">
+    <div class="bg-navy-900 text-white p-5 flex items-center justify-between">
+      <div>
+        <div class="text-xs text-accent font-bold tracking-wider uppercase" id="drawerRef">#SC-XXXX</div>
+        <h3 class="font-jakarta font-extrabold text-lg" id="drawerCustomerName">Customer Details</h3>
+      </div>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 space-y-5 custom-scrollbar">
+      <!-- Contact Box -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase">Customer Phone</span>
+          <a id="drawerPhoneLink" href="#" class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold hover:bg-emerald-100">
+            <i class="fa-solid fa-phone"></i> <span id="drawerPhone">98XXXXXXXX</span>
+          </a>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase">WhatsApp Action</span>
+          <a id="drawerWhatsAppBtn" href="#" target="_blank" class="inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-1 rounded-full text-xs font-bold hover:opacity-90">
+            <i class="fa-brands fa-whatsapp"></i> Chat Direct
+          </a>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase">Service Category</span>
+          <span id="drawerServiceType" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-navy-900">CCTV</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase">Sub-Service</span>
+          <span id="drawerSubService" class="text-xs font-semibold text-slate-800 text-right">4-Camera Setup</span>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Customer Address / Locality</span>
+          <div id="drawerAddress" class="text-xs text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200">
+            Indirapuram, Ghaziabad
+          </div>
+        </div>
+      </div>
+
+      <!-- Lifecycle Status Form -->
+      <form id="drawerStatusForm" onsubmit="updateLeadFromDrawer(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1 uppercase">Job Lifecycle Status</label>
+          <select id="drawerStatusSelect" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold bg-white focus:outline-none focus:border-navy-900">
+            <option value="new_lead">🔴 New Lead (Needs Immediate Contact)</option>
+            <option value="contacted">🟡 Contacted & Requirements Confirmed</option>
+            <option value="technician_assigned">🔵 Technician Assigned & En Route</option>
+            <option value="work_in_progress">🟣 Work In Progress on Site</option>
+            <option value="completed">🟢 Completed & Invoiced</option>
+            <option value="cancelled">⚪ Cancelled</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1 uppercase">Assigned Field Technician</label>
+          <input id="drawerTechnician" placeholder="e.g. Ramesh Kumar (Tech #04) - 9876543210" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:border-navy-900">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1 uppercase">Estimated / Invoiced Amount (₹)</label>
+          <input id="drawerAmount" type="number" step="50" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:border-navy-900">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1 uppercase">Internal Operations Notes</label>
+          <textarea id="drawerNotes" rows="3" placeholder="Customer availability, gate pass requirements, spare parts needed..." class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:border-navy-900"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm py-3 rounded-xl shadow transition">
+          Update Lead Record
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE MODAL (Add/Edit) -->
+<div id="serviceModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onclick="closeServiceModal()"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
+      <h3 id="serviceModalTitle" class="font-jakarta font-extrabold text-lg text-navy-900 mb-4">Add New Service</h3>
+      <form id="serviceForm" onsubmit="saveService(event)" class="space-y-3">
+        <input type="hidden" id="srv_id">
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Category</label>
+          <select id="srv_category" class="w-full px-3 py-2 rounded-xl border text-sm">
+            <option value="CCTV">CCTV Solutions</option>
+            <option value="AC">AC Solutions</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Title</label>
+          <input id="srv_title" required class="w-full px-3 py-2 rounded-xl border text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Base Price (₹)</label>
+            <input id="srv_price" type="number" required class="w-full px-3 py-2 rounded-xl border text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Unit Label</label>
+            <input id="srv_unit" placeholder="per unit / kit" class="w-full px-3 py-2 rounded-xl border text-sm">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Description</label>
+          <textarea id="srv_desc" rows="2" class="w-full px-3 py-2 rounded-xl border text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Features (One per line)</label>
+          <textarea id="srv_features" rows="3" placeholder="Feature 1&#10;Feature 2" class="w-full px-3 py-2 rounded-xl border text-sm"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeServiceModal()" class="px-4 py-2 text-xs font-bold text-slate-600">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-bold">Save Service</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL MODAL -->
+<div id="reviewModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onclick="closeReviewModal()"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
+      <h3 class="font-jakarta font-extrabold text-lg text-navy-900 mb-4">Add Client Review</h3>
+      <form id="reviewForm" onsubmit="saveReview(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Customer Name</label>
+          <input id="rev_name" required class="w-full px-3 py-2 rounded-xl border text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Locality (e.g. Indirapuram, Ghaziabad)</label>
+          <input id="rev_locality" required class="w-full px-3 py-2 rounded-xl border text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Category</label>
+            <select id="rev_category" class="w-full px-3 py-2 rounded-xl border text-sm">
+              <option value="CCTV">CCTV</option>
+              <option value="AC">AC</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Rating</label>
+            <select id="rev_rating" class="w-full px-3 py-2 rounded-xl border text-sm">
+              <option value="5">★★★★★ (5 Stars)</option>
+              <option value="4">★★★★☆ (4 Stars)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Customer Review Text</label>
+          <textarea id="rev_review" rows="3" required class="w-full px-3 py-2 rounded-xl border text-sm"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeReviewModal()" class="px-4 py-2 text-xs font-bold text-slate-600">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-bold">Post Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MANUAL NEW LEAD BOOKING MODAL -->
+<div id="newLeadModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onclick="closeNewLeadModal()"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl relative border border-slate-100">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+          <div>
+            <h3 class="font-jakarta font-extrabold text-lg text-navy-900 leading-tight">Create New Booking</h3>
+            <p class="text-slate-400 text-xs">Enter walk-in or incoming phone inquiry</p>
+          </div>
+        </div>
+        <button onclick="closeNewLeadModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <form id="newLeadForm" onsubmit="saveNewLead(event)" class="space-y-3.5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Customer Name *</label>
+            <input id="nl_name" required placeholder="e.g. Rajesh Sharma" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number (10 Digits) *</label>
+            <input id="nl_phone" required pattern="[0-9]{10}" placeholder="9811XXXXXX" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Service Type</label>
+            <select id="nl_service" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none bg-white">
+              <option value="CCTV">CCTV Solutions</option>
+              <option value="AC">AC Solutions</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Sub-Service / Package</label>
+            <input id="nl_subservice" placeholder="e.g. 4-Camera Setup / AC Foam Wash" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Locality / Area</label>
+            <input id="nl_area" placeholder="e.g. Indirapuram, Ghaziabad" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Estimated Amount (₹)</label>
+            <input id="nl_amount" type="number" step="50" placeholder="e.g. 8999" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Doorstep Address</label>
+          <textarea id="nl_address" rows="2" placeholder="House/Flat No., Society/Street, Landmark" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Remarks / Technician Notes</label>
+          <input id="nl_notes" placeholder="Customer available after 4 PM, gate pass needed..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:border-navy-900 focus:outline-none">
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" onclick="closeNewLeadModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-navy-900">Cancel</button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+            <i class="fa-solid fa-check"></i>
+            <span>Create Booking</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// State
+let token = localStorage.getItem('sc_admin_token') || '';
+let currentLeads = [];
+let currentServices = [];
+let currentTestimonials = [];
+let currentSettings = {};
+let activeTab = 'leads';
+let viewMode = 'split'; // Default: Split CRM (Lead Record on Left, Details on Right)
+let activeLeadId = null;
+
+const STATUS_MAP = {
+  new_lead: { label: 'New Lead', color: 'bg-amber-100 text-amber-800 border-amber-200', bar: 'bg-amber-500', icon: 'fa-bolt' },
+  contacted: { label: 'Contacted', color: 'bg-sky-100 text-sky-800 border-sky-200', bar: 'bg-sky-500', icon: 'fa-phone' },
+  technician_assigned: { label: 'Tech Assigned', color: 'bg-blue-100 text-blue-800 border-blue-200', bar: 'bg-blue-600', icon: 'fa-truck-fast' },
+  work_in_progress: { label: 'In Progress', color: 'bg-purple-100 text-purple-800 border-purple-200', bar: 'bg-purple-600', icon: 'fa-screwdriver-wrench' },
+  completed: { label: 'Completed', color: 'bg-emerald-100 text-emerald-800 border-emerald-200', bar: 'bg-emerald-500', icon: 'fa-circle-check' },
+  cancelled: { label: 'Cancelled', color: 'bg-slate-200 text-slate-700 border-slate-300', bar: 'bg-slate-400', icon: 'fa-ban' }
+};
+
+// Init
+window.addEventListener('DOMContentLoaded', () => {
+  if (token) {
+    verifySession();
+  } else {
+    showLogin();
+  }
+});
+
+function showLogin() {
+  document.getElementById('loginScreen').classList.remove('hidden');
+  document.getElementById('dashboardApp').classList.add('hidden');
+}
+
+function showDashboard() {
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('dashboardApp').classList.remove('hidden');
+  refreshData();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('adminToast');
+  document.getElementById('adminToastText').textContent = msg;
+  t.classList.remove('hidden');
+  setTimeout(() => t.classList.add('hidden'), 3500);
+}
+
+// Auth handlers
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const username = document.getElementById('loginUsername').value;
+  const password = document.getElementById('loginPassword').value;
+  const errBox = document.getElementById('loginError');
+  errBox.classList.add('hidden');
+
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (res.ok && data.token) {
+      token = data.token;
+      localStorage.setItem('sc_admin_token', token);
+      if (data.user && data.user.name) {
+        document.getElementById('adminUserName').textContent = data.user.name;
+      }
+      showDashboard();
+    } else {
+      errBox.textContent = data.error || 'Invalid credentials';
+      errBox.classList.remove('hidden');
+    }
+  } catch (err) {
+    errBox.textContent = 'Server connection error';
+    errBox.classList.remove('hidden');
+  }
+});
+
+async function verifySession() {
+  try {
+    const res = await fetch('/api/auth/me', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.user && data.user.name) {
+        document.getElementById('adminUserName').textContent = data.user.name;
+      }
+      showDashboard();
+    } else {
+      localStorage.removeItem('sc_admin_token');
+      token = '';
+      showLogin();
+    }
+  } catch (e) {
+    showDashboard(); // fallback
+  }
+}
+
+function logoutAdmin() {
+  localStorage.removeItem('sc_admin_token');
+  token = '';
+  showLogin();
+}
+
+// Navigation Tabs
+function switchTab(tabId) {
+  activeTab = tabId;
+  const tabs = ['leads', 'services', 'testimonials', 'seo'];
+  tabs.forEach(t => {
+    const btn = document.getElementById(`nav-${t}`);
+    const content = document.getElementById(`tabContent-${t}`);
+    if (t === tabId) {
+      btn.className = 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-accent text-white transition';
+      content.classList.remove('hidden');
+    } else {
+      btn.className = 'w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition';
+      content.classList.add('hidden');
+    }
+  });
+
+  const titles = {
+    leads: { title: 'Lead & Booking CRM', sub: 'Real-time incoming customer requests from Delhi NCR' },
+    services: { title: 'Services & Pricing CMS', sub: 'Manage live offerings, packages, and pricing tables' },
+    testimonials: { title: 'Customer Reviews & Social Proof', sub: 'Approve and feature client ratings' },
+    seo: { title: 'Local SEO & System Settings', sub: 'Dynamic city keywords, emergency phone, and Google Maps' }
+  };
+  document.getElementById('pageTitle').textContent = titles[tabId].title;
+  document.getElementById('pageSubtitle').textContent = titles[tabId].sub;
+}
+
+function setViewMode(mode) {
+  viewMode = mode;
+  const kanban = document.getElementById('kanbanContainer');
+  const table = document.getElementById('tableContainer');
+  const btnS = document.getElementById('viewBtn-split');
+  const btnK = document.getElementById('viewBtn-kanban');
+  const btnT = document.getElementById('viewBtn-table');
+
+  const activeBtnCls = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-navy-900 shadow';
+  const inactiveBtnCls = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900';
+
+  if (btnS) btnS.className = mode === 'split' ? activeBtnCls : inactiveBtnCls;
+  if (btnK) btnK.className = mode === 'kanban' ? activeBtnCls : inactiveBtnCls;
+  if (btnT) btnT.className = mode === 'table' ? activeBtnCls : inactiveBtnCls;
+
+  if (mode === 'table') {
+    kanban.classList.add('hidden');
+    table.classList.remove('hidden');
+  } else {
+    table.classList.add('hidden');
+    kanban.classList.remove('hidden');
+  }
+  renderLeads();
+}
+
+// Data Fetching
+async function refreshData() {
+  try {
+    const [leadsRes, servicesRes, testRes, settingsRes] = await Promise.all([
+      fetch('/api/leads', { headers: { 'Authorization': `Bearer ${token}` } }),
+      fetch('/api/services'),
+      fetch('/api/testimonials'),
+      fetch('/api/settings')
+    ]);
+
+    if (leadsRes.ok) currentLeads = await leadsRes.json();
+    if (servicesRes.ok) currentServices = await servicesRes.json();
+    if (testRes.ok) currentTestimonials = await testRes.json();
+    if (settingsRes.ok) {
+      const data = await settingsRes.json();
+      currentSettings = data.settings || {};
+      populateSettingsForm(currentSettings);
+    }
+
+    renderLeads();
+    renderServices();
+    renderTestimonials();
+  } catch (err) {
+    console.error('Refresh error:', err);
+  }
+}
+
+// 1. RENDER LEADS (Split CRM, Kanban, Table)
+function renderLeads() {
+  const q = (document.getElementById('leadSearch').value || '').toLowerCase();
+  const stFilter = document.getElementById('filterStatus').value;
+  const catFilter = document.getElementById('filterCategory').value;
+
+  let filtered = currentLeads.filter(l => {
+    const matchesQ = !q || (
+      l.customer_name.toLowerCase().includes(q) ||
+      l.phone.includes(q) ||
+      l.lead_ref.toLowerCase().includes(q) ||
+      (l.address && l.address.toLowerCase().includes(q)) ||
+      (l.sub_service && l.sub_service.toLowerCase().includes(q))
+    );
+    const matchesSt = stFilter === 'all' || l.status === stFilter;
+    const matchesCat = catFilter === 'all' || l.service_type === catFilter;
+    return matchesQ && matchesSt && matchesCat;
+  });
+
+  // Update metrics
+  document.getElementById('metricTotalLeads').textContent = currentLeads.length;
+  const newCount = currentLeads.filter(l => l.status === 'new_lead').length;
+  document.getElementById('metricNewLeads').textContent = newCount;
+  document.getElementById('badgeNewLeads').textContent = newCount;
+  document.getElementById('metricInProgress').textContent = currentLeads.filter(l => l.status === 'technician_assigned' || l.status === 'work_in_progress').length;
+
+  const pipeVal = currentLeads.reduce((acc, curr) => acc + (parseFloat(curr.estimated_amount) || 0), 0);
+  document.getElementById('metricPipelineVal').textContent = '₹' + pipeVal.toLocaleString('en-IN');
+
+  const kanbanContainer = document.getElementById('kanbanContainer');
+
+  // VIEW MODE A: SPLIT CRM (Lead Records Left, Full Details Right)
+  if (viewMode === 'split') {
+    kanbanContainer.className = 'grid grid-cols-1 lg:grid-cols-12 gap-6 items-start';
+
+    // Auto-select lead if none or deleted
+    if (!activeLeadId || !filtered.some(l => l.id === activeLeadId)) {
+      activeLeadId = filtered.length > 0 ? filtered[0].id : null;
+    }
+
+    const activeLead = filtered.find(l => l.id === activeLeadId) || (currentLeads.find(l => l.id === activeLeadId) || null);
+
+    // Render Left Side: Lead Records List with "All Service lead ek line me rakho"
+    const leftHtml = `
+      <div class="lg:col-span-5 xl:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex flex-col max-h-[760px]">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+          <div>
+            <h3 class="font-jakarta font-bold text-sm text-navy-900">Lead Records (${filtered.length})</h3>
+            <p class="text-[11px] text-slate-400">Click any booking to manage details</p>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-700">
+            ${catFilter === 'all' ? 'All Services' : catFilter + ' Only'}
+          </span>
+        </div>
+
+        <div class="space-y-2.5 flex-1 overflow-y-auto pr-1 custom-scrollbar">
+          ${filtered.length === 0 ? `
+            <div class="text-center py-12 text-slate-400 text-xs">
+              <i class="fa-solid fa-inbox text-2xl mb-2 text-slate-300 block"></i>
+              No leads match current filter criteria
+            </div>
+          ` : ''}
+
+          ${filtered.map(l => {
+            const isSelected = activeLeadId === l.id;
+            const st = STATUS_MAP[l.status] || { label: l.status, color: 'bg-slate-100 text-slate-700 border-slate-200', icon: 'fa-circle' };
+            const isCCTV = l.service_type === 'CCTV';
+
+            return `
+              <div onclick="selectLead('${l.id}')" class="p-3 rounded-xl border transition cursor-pointer relative ${
+                isSelected 
+                  ? 'border-navy-900 bg-blue-50/40 shadow-sm ring-2 ring-navy-900/15' 
+                  : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/80 bg-white'
+              }">
+                <!-- ALL SERVICE LEAD EK LINE ME RAKHO: Single-line Clean Header Bar -->
+                <div class="flex items-center justify-between gap-1.5 pb-2 mb-2 border-b border-slate-100 text-[11px]">
+                  <div class="flex items-center gap-1.5 min-w-0">
+                    <span class="px-2 py-0.5 rounded-md font-extrabold text-[10px] tracking-wide whitespace-nowrap ${
+                      isCCTV ? 'bg-navy-900 text-white' : 'bg-cyan-600 text-white'
+                    }">
+                      <i class="fa-solid ${isCCTV ? 'fa-video' : 'fa-snowflake'} text-[9px] mr-0.5"></i> ${l.service_type}
+                    </span>
+                    <span class="font-mono text-slate-500 font-bold text-[10px] whitespace-nowrap">${l.lead_ref}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 flex-shrink-0">
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap ${st.color}">
+                      <i class="fa-solid ${st.icon || 'fa-circle'} text-[8px] mr-1"></i>${st.label}
+                    </span>
+                    <span class="text-[10px] text-slate-400 whitespace-nowrap">${new Date(l.created_at).toLocaleDateString([], {month:'short', day:'numeric'})}</span>
+                  </div>
+                </div>
+
+                <!-- Customer Name & Price -->
+                <div class="flex items-center justify-between gap-2">
+                  <h4 class="font-jakarta font-bold text-xs text-navy-900 truncate">${l.customer_name}</h4>
+                  <span class="font-extrabold text-xs text-emerald-600 whitespace-nowrap">₹${(parseFloat(l.estimated_amount) || 0).toLocaleString('en-IN')}</span>
+                </div>
+
+                <!-- Service Sub-package & Phone -->
+                <div class="flex items-center justify-between text-[11px] text-slate-600 mt-1 gap-2">
+                  <span class="truncate font-medium text-slate-700">${l.sub_service || 'General Service'}</span>
+                  <span class="text-[10px] text-slate-400 whitespace-nowrap"><i class="fa-solid fa-phone text-[9px]"></i> ${l.phone}</span>
+                </div>
+
+                <!-- Locality & Technician -->
+                <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1.5 pt-1.5 border-t border-slate-50">
+                  <span class="truncate"><i class="fa-solid fa-location-dot text-accent text-[9px] mr-0.5"></i> ${l.area || 'Delhi NCR'}</span>
+                  <span class="truncate max-w-[120px] text-right font-medium ${l.assigned_technician && l.assigned_technician !== 'Unassigned' ? 'text-blue-600' : 'text-slate-400 italic'}">
+                    ${l.assigned_technician || 'Unassigned'}
+                  </span>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    // Render Right Side: Lead Details & Management Panel
+    let rightHtml = '';
+    if (!activeLead) {
+      rightHtml = `
+        <div class="lg:col-span-7 xl:col-span-7 bg-white rounded-2xl border border-slate-200 p-12 text-center text-slate-400">
+          <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3 block"></i>
+          <h4 class="font-jakarta font-bold text-base text-navy-900 mb-1">No Lead Selected</h4>
+          <p class="text-xs text-slate-500">Select a lead from the left list to view customer info, dispatch technicians, or update status.</p>
+        </div>
+      `;
+    } else {
+      const isCCTV = activeLead.service_type === 'CCTV';
+      const st = STATUS_MAP[activeLead.status] || { label: activeLead.status, color: 'bg-slate-100 text-slate-700' };
+
+      rightHtml = `
+        <div class="lg:col-span-7 xl:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4 max-h-[760px] overflow-y-auto custom-scrollbar">
+          <!-- Top Detail Header Banner -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl ${isCCTV ? 'bg-navy-900 text-white' : 'bg-cyan-600 text-white'} flex items-center justify-center font-bold text-lg shadow-sm">
+                <i class="fa-solid ${isCCTV ? 'fa-video' : 'fa-snowflake'}"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-jakarta font-extrabold text-base text-navy-900 leading-tight">${activeLead.customer_name}</h3>
+                  <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">${activeLead.lead_ref}</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
+                  <span><i class="fa-solid fa-phone text-slate-400 text-[10px]"></i> +91 ${activeLead.phone}</span>
+                  <span>•</span>
+                  <span><i class="fa-solid fa-clock text-slate-400 text-[10px]"></i> ${new Date(activeLead.created_at).toLocaleString([], {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Call & WhatsApp CTAs -->
+            <div class="flex items-center gap-2">
+              <a href="tel:${activeLead.phone}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition">
+                <i class="fa-solid fa-phone text-xs"></i>
+                <span>Call</span>
+              </a>
+              <a href="https://wa.me/91${activeLead.phone}?text=${encodeURIComponent('Hello ' + activeLead.customer_name + ', SmartCool Security Services Delhi NCR here regarding your booking ' + activeLead.lead_ref + ' for ' + (activeLead.sub_service || activeLead.service_type) + '.')}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold text-xs shadow-sm transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>WhatsApp</span>
+              </a>
+              <button onclick="openLeadDrawer('${activeLead.id}')" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold transition" title="Open Full Drawer">
+                <i class="fa-solid fa-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 1-Click Status Bar / Stepper -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">Change Lead Status</label>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+              ${Object.entries(STATUS_MAP).map(([key, info]) => {
+                const isActive = activeLead.status === key;
+                return `
+                  <button type="button" onclick="quickUpdateLeadStatus('${activeLead.id}', '${key}')" class="px-2 py-1.5 rounded-lg text-[11px] font-bold text-center transition flex flex-col items-center gap-1 ${
+                    isActive 
+                      ? 'bg-white shadow text-navy-900 ring-2 ring-navy-900/20' 
+                      : 'text-slate-600 hover:bg-white/60 hover:text-navy-900'
+                  }">
+                    <i class="fa-solid ${info.icon} text-xs ${isActive ? 'text-accent' : 'text-slate-400'}"></i>
+                    <span class="truncate w-full">${info.label}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Lead Details Form -->
+          <form onsubmit="saveActiveLeadForm(event, '${activeLead.id}')" class="space-y-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Service Package / Offering</label>
+                <div class="font-bold text-xs text-navy-900">${activeLead.sub_service || 'General Inquest'}</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Category: ${activeLead.service_type}</div>
+              </div>
+
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Estimated Amount (₹)</label>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-slate-500">₹</span>
+                  <input id="split_lead_amount" type="number" step="50" value="${activeLead.estimated_amount || 0}" class="w-full bg-white px-2.5 py-1 rounded-lg border border-slate-200 text-xs font-bold text-navy-900 focus:outline-none focus:border-navy-900">
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Assigned Technician</label>
+                <select id="split_lead_tech" class="w-full bg-white px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-navy-900 focus:outline-none focus:border-navy-900">
+                  <option value="Unassigned" ${!activeLead.assigned_technician || activeLead.assigned_technician === 'Unassigned' ? 'selected' : ''}>Unassigned</option>
+                  <option value="Rajesh Kumar (CCTV Lead Tech #01)" ${activeLead.assigned_technician && activeLead.assigned_technician.includes('Rajesh') ? 'selected' : ''}>Rajesh Kumar (CCTV Lead Tech #01)</option>
+                  <option value="Sunil Sharma (CCTV Field Tech #02)" ${activeLead.assigned_technician && activeLead.assigned_technician.includes('Sunil') ? 'selected' : ''}>Sunil Sharma (CCTV Field Tech #02)</option>
+                  <option value="Ramesh Kumar (AC Senior Tech #04)" ${activeLead.assigned_technician && activeLead.assigned_technician.includes('Ramesh') ? 'selected' : ''}>Ramesh Kumar (AC Senior Tech #04)</option>
+                  <option value="Amit Verma (AC Jet Clean Tech #03)" ${activeLead.assigned_technician && activeLead.assigned_technician.includes('Amit') ? 'selected' : ''}>Amit Verma (AC Jet Clean Tech #03)</option>
+                  <option value="Pawan Yadav (Multi-Skill Specialist #05)" ${activeLead.assigned_technician && activeLead.assigned_technician.includes('Pawan') ? 'selected' : ''}>Pawan Yadav (Multi-Skill Specialist #05)</option>
+                </select>
+              </div>
+
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Target Locality / Area</label>
+                <input id="split_lead_area" value="${activeLead.area || 'Delhi NCR'}" class="w-full bg-white px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-navy-900 focus:outline-none focus:border-navy-900">
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Doorstep Address</label>
+              <textarea id="split_lead_address" rows="2" class="w-full bg-white px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-navy-900 focus:outline-none focus:border-navy-900">${activeLead.address || ''}</textarea>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Internal Notes / Technician Remarks</label>
+              <textarea id="split_lead_notes" rows="2" placeholder="e.g. Call before visiting, client available after 3 PM..." class="w-full bg-white px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-navy-900 focus:outline-none focus:border-navy-900">${activeLead.notes || ''}</textarea>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div class="text-[11px] text-slate-400">
+                Source: <span class="font-semibold text-slate-600">${activeLead.utm_source || 'Direct Website'}</span>
+              </div>
+              <button type="submit" class="px-5 py-2 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Save Booking Changes</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      `;
+    }
+
+    kanbanContainer.innerHTML = leftHtml + rightHtml;
+  }
+
+  // VIEW MODE B: KANBAN COLUMNS
+  else if (viewMode === 'kanban') {
+    kanbanContainer.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 overflow-x-auto pb-4';
+
+    const kanbanColumns = [
+      { key: 'new_lead', title: 'New Leads', icon: 'fa-bolt', color: 'border-amber-400 bg-amber-50/50' },
+      { key: 'contacted', title: 'Contacted', icon: 'fa-phone', color: 'border-sky-400 bg-sky-50/50' },
+      { key: 'technician_assigned', title: 'Tech Assigned', icon: 'fa-truck-fast', color: 'border-blue-400 bg-blue-50/50' },
+      { key: 'work_in_progress', title: 'In Progress', icon: 'fa-screwdriver-wrench', color: 'border-purple-400 bg-purple-50/50' },
+      { key: 'completed', title: 'Completed', icon: 'fa-circle-check', color: 'border-emerald-400 bg-emerald-50/50' },
+      { key: 'cancelled', title: 'Cancelled', icon: 'fa-ban', color: 'border-slate-300 bg-slate-50/50' }
+    ];
+
+    kanbanContainer.innerHTML = kanbanColumns.map(col => {
+      const colLeads = filtered.filter(l => l.status === col.key);
+      return `
+        <div class="bg-white rounded-2xl border-t-4 ${col.color} border-x border-b border-slate-200/80 p-3 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid ${col.icon} text-xs text-slate-500"></i>
+              <span class="font-jakarta font-bold text-xs text-navy-900">${col.title}</span>
+            </div>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">${colLeads.length}</span>
+          </div>
+
+          <div class="space-y-2.5 flex-1 overflow-y-auto max-h-[600px] custom-scrollbar">
+            ${colLeads.length === 0 ? `<div class="text-[11px] text-slate-400 italic text-center py-6">No requests</div>` : ''}
+            ${colLeads.map(l => `
+              <div onclick="selectLead('${l.id}')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-navy-900 shadow-sm hover:shadow transition cursor-pointer group">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md ${l.service_type === 'CCTV' ? 'bg-blue-50 text-navy-700' : 'bg-cyan-50 text-cyan-800'}">${l.service_type}</span>
+                  <span class="text-[10px] font-bold text-slate-400">${l.lead_ref}</span>
+                </div>
+                <h4 class="font-jakarta font-bold text-xs text-navy-900 group-hover:text-accent transition truncate">${l.customer_name}</h4>
+                <div class="text-[11px] text-slate-500 flex items-center gap-1.5 mt-1">
+                  <i class="fa-solid fa-phone text-[10px]"></i> ${l.phone}
+                </div>
+                <div class="text-[11px] text-slate-600 truncate mt-1">
+                  <i class="fa-solid fa-location-dot text-[10px] text-accent"></i> ${l.area || 'Delhi NCR'}
+                </div>
+                <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-[11px]">
+                  <span class="font-bold text-emerald-600">₹${(parseFloat(l.estimated_amount) || 0).toLocaleString('en-IN')}</span>
+                  <span class="text-[10px] text-slate-400">${new Date(l.created_at).toLocaleDateString([], {month:'short', day:'numeric'})}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Render Table Rows
+  const tableBody = document.getElementById('tableBody');
+  if (filtered.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="8" class="text-center py-8 text-slate-400">No leads match this filter</td></tr>`;
+  } else {
+    tableBody.innerHTML = filtered.map(l => {
+      const st = STATUS_MAP[l.status] || { label: l.status, color: 'bg-slate-100 text-slate-800' };
+      return `
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="px-4 py-3 font-semibold text-navy-900 whitespace-nowrap">
+            <div>${l.lead_ref}</div>
+            <div class="text-[10px] text-slate-400 font-normal">${new Date(l.created_at).toLocaleDateString()}</div>
+          </td>
+          <td class="px-4 py-3 font-bold text-slate-800 whitespace-nowrap">
+            <div>${l.customer_name}</div>
+            <div class="text-[11px] text-slate-500 font-normal flex items-center gap-1">
+              <i class="fa-solid fa-phone text-[9px]"></i> ${l.phone}
+            </div>
+          </td>
+          <td class="px-4 py-3 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${l.service_type === 'CCTV' ? 'bg-blue-50 text-navy-800' : 'bg-cyan-50 text-cyan-800'}">${l.service_type}</span>
+            <div class="text-slate-600 text-[11px] truncate max-w-[140px]">${l.sub_service || 'General'}</div>
+          </td>
+          <td class="px-4 py-3 text-slate-600 text-[11px] max-w-[160px] truncate">
+            ${l.address || l.area || 'Delhi NCR'}
+          </td>
+          <td class="px-4 py-3 font-bold text-emerald-600 whitespace-nowrap">
+            ₹${(parseFloat(l.estimated_amount) || 0).toLocaleString('en-IN')}
+          </td>
+          <td class="px-4 py-3 whitespace-nowrap">
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${st.color}">${st.label}</span>
+          </td>
+          <td class="px-4 py-3 text-slate-600 text-[11px] whitespace-nowrap">
+            ${l.assigned_technician || '<span class="text-slate-400 italic">Unassigned</span>'}
+          </td>
+          <td class="px-4 py-3 text-right whitespace-nowrap">
+            <button onclick="selectLead('${l.id}'); openLeadDrawer('${l.id}')" class="px-3 py-1 rounded-lg bg-navy-900 text-white hover:bg-navy-800 font-bold text-[11px] transition">
+              Manage →
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+}
+
+// 2. LEAD SELECTION & QUICK ACTIONS
+function selectLead(leadId) {
+  activeLeadId = leadId;
+  if (viewMode === 'split') {
+    renderLeads();
+  } else {
+    openLeadDrawer(leadId);
+  }
+}
+
+async function quickUpdateLeadStatus(leadId, newStatus) {
+  try {
+    const res = await fetch(`/api/leads/${leadId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ status: newStatus })
+    });
+
+    if (res.ok) {
+      const idx = currentLeads.findIndex(l => l.id === leadId);
+      if (idx !== -1) currentLeads[idx].status = newStatus;
+      showToast(`Status updated to: ${STATUS_MAP[newStatus]?.label || newStatus}`);
+      renderLeads();
+    } else {
+      alert('Failed to update status');
+    }
+  } catch (err) {
+    alert('Server communication error');
+  }
+}
+
+async function saveActiveLeadForm(e, leadId) {
+  e.preventDefault();
+  const payload = {
+    estimated_amount: document.getElementById('split_lead_amount').value,
+    assigned_technician: document.getElementById('split_lead_tech').value,
+    area: document.getElementById('split_lead_area').value,
+    address: document.getElementById('split_lead_address').value,
+    notes: document.getElementById('split_lead_notes').value
+  };
+
+  try {
+    const res = await fetch(`/api/leads/${leadId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast('Lead details saved successfully!');
+      refreshData();
+    } else {
+      alert('Failed to save changes');
+    }
+  } catch (err) {
+    alert('Server communication error');
+  }
+}
+
+// Manual Lead Creation
+function openNewLeadModal() {
+  document.getElementById('newLeadForm').reset();
+  document.getElementById('newLeadModal').classList.remove('hidden');
+}
+
+function closeNewLeadModal() {
+  document.getElementById('newLeadModal').classList.add('hidden');
+}
+
+async function saveNewLead(e) {
+  e.preventDefault();
+  const payload = {
+    customer_name: document.getElementById('nl_name').value,
+    phone: document.getElementById('nl_phone').value,
+    service_type: document.getElementById('nl_service').value,
+    sub_service: document.getElementById('nl_subservice').value || 'Direct Booking',
+    area: document.getElementById('nl_area').value || 'Delhi NCR',
+    address: document.getElementById('nl_address').value || '',
+    estimated_amount: parseFloat(document.getElementById('nl_amount').value) || 0,
+    notes: document.getElementById('nl_notes').value || '',
+    utm_source: 'Admin Manual Entry'
+  };
+
+  try {
+    const res = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast('New booking created successfully!');
+      closeNewLeadModal();
+      refreshData();
+    } else {
+      alert('Failed to create booking');
+    }
+  } catch (err) {
+    alert('Server connection error');
+  }
+}
+
+// 3. LEAD DRAWER
+function openLeadDrawer(leadId) {
+  const lead = currentLeads.find(l => l.id === leadId);
+  if (!lead) return;
+  activeLeadId = leadId;
+
+  document.getElementById('drawerRef').textContent = lead.lead_ref;
+  document.getElementById('drawerCustomerName').textContent = lead.customer_name;
+  document.getElementById('drawerPhone').textContent = lead.phone;
+  document.getElementById('drawerPhoneLink').href = `tel:${lead.phone}`;
+  document.getElementById('drawerWhatsAppBtn').href = `https://wa.me/91${lead.phone}?text=Hi%20${encodeURIComponent(lead.customer_name)}%2C%20this%20is%20SmartCool%20Security%20Services%20Delhi%20NCR%20regarding%20your%20booking%20${lead.lead_ref}.`;
+  document.getElementById('drawerServiceType').textContent = lead.service_type;
+  document.getElementById('drawerSubService').textContent = lead.sub_service || 'General Inquest';
+  document.getElementById('drawerAddress').textContent = lead.address || lead.area || 'Pending address confirmation';
+  document.getElementById('drawerStatusSelect').value = lead.status || 'new_lead';
+  document.getElementById('drawerTechnician').value = lead.assigned_technician || '';
+  document.getElementById('drawerAmount').value = lead.estimated_amount || '';
+  document.getElementById('drawerNotes').value = lead.notes || '';
+
+  document.getElementById('leadDrawer').classList.remove('hidden');
+}
+
+function closeDrawer() {
+  document.getElementById('leadDrawer').classList.add('hidden');
+}
+
+async function updateLeadFromDrawer(e) {
+  e.preventDefault();
+  if (!activeLeadId) return;
+
+  const payload = {
+    status: document.getElementById('drawerStatusSelect').value,
+    assigned_technician: document.getElementById('drawerTechnician').value,
+    estimated_amount: document.getElementById('drawerAmount').value,
+    notes: document.getElementById('drawerNotes').value
+  };
+
+  try {
+    const res = await fetch(`/api/leads/${activeLeadId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast('Lead record updated successfully!');
+      closeDrawer();
+      refreshData();
+    } else {
+      alert('Failed to update lead');
+    }
+  } catch (err) {
+    alert('Server connection error');
+  }
+}
+
+// 3. SERVICES CMS
+function renderServices() {
+  const list = document.getElementById('servicesList');
+  list.innerHTML = currentServices.map(s => `
+    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col">
+      <div class="relative h-40">
+        <img src="${s.image}" class="w-full h-full object-cover" alt="${s.title}">
+        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-extrabold ${s.category === 'CCTV' ? 'bg-navy-900 text-white' : 'bg-cyan-600 text-white'}">${s.category}</span>
+        <span class="absolute bottom-3 right-3 bg-white/95 px-2.5 py-1 rounded-lg text-xs font-bold text-accent shadow">Starts ₹${s.price.toLocaleString()}</span>
+      </div>
+      <div class="p-5 flex-1 flex flex-col">
+        <h4 class="font-jakarta font-bold text-sm text-navy-900">${s.title}</h4>
+        <p class="text-xs text-slate-500 mt-1 line-clamp-2">${s.description}</p>
+        <ul class="mt-3 space-y-1 text-xs text-slate-600 flex-1">
+          ${(s.features || []).slice(0, 3).map(f => `<li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500 text-[10px]"></i> ${f}</li>`).join('')}
+        </ul>
+        <div class="flex items-center justify-end gap-2 pt-4 mt-3 border-t border-slate-100">
+          <button onclick="editService(${s.id})" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700">Edit</button>
+          <button onclick="deleteService(${s.id})" class="px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-600">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openServiceModal() {
+  document.getElementById('serviceModalTitle').textContent = 'Add New Service';
+  document.getElementById('srv_id').value = '';
+  document.getElementById('serviceForm').reset();
+  document.getElementById('serviceModal').classList.remove('hidden');
+}
+
+function closeServiceModal() {
+  document.getElementById('serviceModal').classList.add('hidden');
+}
+
+function editService(id) {
+  const s = currentServices.find(item => item.id === id);
+  if (!s) return;
+  document.getElementById('serviceModalTitle').textContent = 'Edit Service Offering';
+  document.getElementById('srv_id').value = s.id;
+  document.getElementById('srv_category').value = s.category;
+  document.getElementById('srv_title').value = s.title;
+  document.getElementById('srv_price').value = s.price;
+  document.getElementById('srv_unit').value = s.unit_label || '';
+  document.getElementById('srv_desc').value = s.description || '';
+  document.getElementById('srv_features').value = (s.features || []).join('\n');
+  document.getElementById('serviceModal').classList.remove('hidden');
+}
+
+async function saveService(e) {
+  e.preventDefault();
+  const id = document.getElementById('srv_id').value;
+  const payload = {
+    category: document.getElementById('srv_category').value,
+    title: document.getElementById('srv_title').value,
+    price: document.getElementById('srv_price').value,
+    unit_label: document.getElementById('srv_unit').value,
+    description: document.getElementById('srv_desc').value,
+    features: document.getElementById('srv_features').value
+  };
+
+  const url = id ? `/api/services/${id}` : '/api/services';
+  const method = id ? 'PUT' : 'POST';
+
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast('Service saved!');
+      closeServiceModal();
+      refreshData();
+    }
+  } catch (e) {
+    alert('Failed to save service');
+  }
+}
+
+async function deleteService(id) {
+  if (!confirm('Are you sure you want to remove this service?')) return;
+  try {
+    const res = await fetch(`/api/services/${id}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (res.ok) {
+      showToast('Service deleted');
+      refreshData();
+    }
+  } catch (e) {
+    alert('Error deleting service');
+  }
+}
+
+// 4. REVIEWS
+function renderTestimonials() {
+  const list = document.getElementById('reviewsList');
+  list.innerHTML = currentTestimonials.map(t => `
+    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-navy-900">${t.client_name}</span>
+          <span class="text-amber-500 text-xs">★★★★★</span>
+        </div>
+        <div class="text-[11px] text-slate-400 mb-2">${t.locality} • <span class="font-bold text-slate-600">${t.service_category}</span></div>
+        <p class="text-xs text-slate-600 leading-relaxed italic">"${t.review}"</p>
+      </div>
+      <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+        <span class="text-emerald-600 font-bold">✓ Approved Review</span>
+        <span class="text-slate-400">Homepage Display: Active</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openReviewModal() {
+  document.getElementById('reviewForm').reset();
+  document.getElementById('reviewModal').classList.remove('hidden');
+}
+function closeReviewModal() {
+  document.getElementById('reviewModal').classList.add('hidden');
+}
+async function saveReview(e) {
+  e.preventDefault();
+  const payload = {
+    client_name: document.getElementById('rev_name').value,
+    locality: document.getElementById('rev_locality').value,
+    service_category: document.getElementById('rev_category').value,
+    rating: document.getElementById('rev_rating').value,
+    review: document.getElementById('rev_review').value
+  };
+  try {
+    const res = await fetch('/api/testimonials', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      showToast('Review posted!');
+      closeReviewModal();
+      refreshData();
+    }
+  } catch (err) {
+    alert('Error posting review');
+  }
+}
+
+// 5. SEO & SETTINGS
+function populateSettingsForm(s) {
+  if (!s) return;
+  document.getElementById('set_phone').value = s.contact_phone || '';
+  document.getElementById('set_whatsapp').value = s.whatsapp_number || '';
+  document.getElementById('set_email').value = s.business_email || '';
+  document.getElementById('set_city').value = s.target_city || '';
+  document.getElementById('set_address').value = s.physical_address || '';
+  document.getElementById('set_hero_title').value = s.hero_title || '';
+  document.getElementById('set_hero_subtitle').value = s.hero_subtitle || '';
+  document.getElementById('set_meta_title').value = s.meta_title || '';
+  document.getElementById('set_meta_desc').value = s.meta_description || '';
+  document.getElementById('set_maps_iframe').value = s.google_maps_iframe || '';
+}
+
+async function saveSettings(e) {
+  e.preventDefault();
+  const payload = {
+    contact_phone: document.getElementById('set_phone').value,
+    whatsapp_number: document.getElementById('set_whatsapp').value,
+    business_email: document.getElementById('set_email').value,
+    target_city: document.getElementById('set_city').value,
+    physical_address: document.getElementById('set_address').value,
+    hero_title: document.getElementById('set_hero_title').value,
+    hero_subtitle: document.getElementById('set_hero_subtitle').value,
+    meta_title: document.getElementById('set_meta_title').value,
+    meta_description: document.getElementById('set_meta_desc').value,
+    google_maps_iframe: document.getElementById('set_maps_iframe').value
+  };
+
+  try {
+    const res = await fetch('/api/settings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast('Settings & Local SEO parameters updated!');
+      refreshData();
+    }
+  } catch (err) {
+    alert('Failed to save settings');
+  }
+}
+</script>
+</body>
+</html>

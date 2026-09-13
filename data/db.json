@@ -1,0 +1,287 @@
+{
+  "admins": [
+    {
+      "id": "adm_1",
+      "username": "admin",
+      "password": "adminpassword123",
+      "name": "Super Admin",
+      "role": "super_admin",
+      "token": "sc_sec_token_998877"
+    }
+  ],
+  "site_settings": {
+    "contact_phone": "+91 93543 04681",
+    "whatsapp_number": "919354304681",
+    "business_email": "support@smartcool.in",
+    "physical_address": "Shop No. 79, Aghapur, Sector 41, Noida, Uttar Pradesh 201301",
+    "target_city": "Delhi NCR / Noida",
+    "hero_title": "Smart Security & Perfect Cooling",
+    "hero_subtitle": "Expert CCTV Installation & AC Repair Services at your doorstep. Certified technicians, same-day service & 100% Satisfaction Guaranteed.",
+    "google_maps_iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14018.874136453186!2d77.3541785!3d28.563212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59a721798e1%3A0x6291a134857b6f75!2sSector%2041%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1700000000000",
+    "meta_title": "SmartCool Security Services Delhi NCR | CCTV & AC Experts - Installation, Repair & AMC",
+    "meta_description": "Delhi NCR's Most Trusted CCTV & AC Service. Expert Installation, Repair, Gas Charging & AMC for Homes, Offices & Societies. 24/7 Support. Call +91 93543 04681"
+  },
+  "service_areas": [
+    {
+      "id": 1,
+      "city": "Delhi",
+      "area_name": "Dwarka",
+      "slug": "cctv-ac-service-in-dwarka-delhi",
+      "pincode": "110075"
+    },
+    {
+      "id": 2,
+      "city": "Delhi",
+      "area_name": "Rohini",
+      "slug": "cctv-ac-service-in-rohini-delhi",
+      "pincode": "110085"
+    },
+    {
+      "id": 3,
+      "city": "Noida",
+      "area_name": "Sector 62",
+      "slug": "cctv-ac-service-in-noida-sector-62",
+      "pincode": "201301"
+    },
+    {
+      "id": 4,
+      "city": "Gurugram",
+      "area_name": "Cyber City & DLF",
+      "slug": "cctv-ac-service-in-gurugram-dlf",
+      "pincode": "122002"
+    },
+    {
+      "id": 5,
+      "city": "Ghaziabad",
+      "area_name": "Indirapuram & Vaishali",
+      "slug": "cctv-ac-service-in-indirapuram-ghaziabad",
+      "pincode": "201014"
+    },
+    {
+      "id": 6,
+      "city": "Faridabad",
+      "area_name": "Sector 15 & NIT",
+      "slug": "cctv-ac-service-in-faridabad-nit",
+      "pincode": "121007"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "category": "CCTV",
+      "title": "2-Camera HD Night Vision Setup",
+      "slug": "2-camera-cctv-installation",
+      "description": "Complete 2-camera kit with 4-Channel DVR, 500GB HDD, cabling & mobile app view.",
+      "price": 4999,
+      "unit_label": "complete kit",
+      "image": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "2x 2MP HD Bullet Cameras",
+        "4-Channel Smart DVR",
+        "Concealed 40m Cabling",
+        "Free Smartphone App Setup",
+        "1-Year Warranty"
+      ],
+      "meta_title": "2 Camera CCTV Installation Package Delhi NCR",
+      "meta_desc": "Affordable 2 camera CCTV installation for flats and small shops in Delhi NCR.",
+      "display_order": 1
+    },
+    {
+      "id": 2,
+      "category": "CCTV",
+      "title": "4-Camera Full Property Security Kit",
+      "slug": "4-camera-cctv-installation",
+      "description": "Most popular setup for 2BHK/3BHK villas, builder floors & stores with smart detection.",
+      "price": 8999,
+      "unit_label": "complete kit",
+      "image": "https://images.unsplash.com/photo-1589824783837-6169889fa20f?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "4x High-Definition Cameras",
+        "1TB Surveillance Hard Drive",
+        "Smart Motion Alerts on Phone",
+        "Night Vision Infrared",
+        "Professional Concealed Fitting"
+      ],
+      "meta_title": "4 Camera CCTV Installation in Delhi NCR - Complete Setup",
+      "meta_desc": "Comprehensive 4 camera security package with 1TB storage for homes and offices.",
+      "display_order": 2
+    },
+    {
+      "id": 3,
+      "category": "CCTV",
+      "title": "CCTV Repair & Diagnostic Visit",
+      "slug": "cctv-repair-service",
+      "description": "Quick diagnosis and fix for offline DVRs, video loss, burnt power supplies, and wiring faults.",
+      "price": 299,
+      "unit_label": "visit charge",
+      "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "90-Minute Arrival",
+        "Power Supply & BNC Test",
+        "App Reconfiguration",
+        "No Visiting Fee if Repaired"
+      ],
+      "meta_title": "Same-Day CCTV Camera Repair in Delhi NCR",
+      "meta_desc": "Fix offline cameras, black screen, DVR issues in 90 mins.",
+      "display_order": 3
+    },
+    {
+      "id": 4,
+      "category": "AC",
+      "title": "Split AC Jet Pump Deep Cleaning",
+      "slug": "split-ac-jet-service",
+      "description": "High-pressure jet wash with foam cleaning for indoor cooling coil, blower, and outdoor unit.",
+      "price": 499,
+      "unit_label": "per split AC",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "High Pressure Jet Wash",
+        "Disinfectant Foam Spray",
+        "Blower & Drain Line Cleaning",
+        "Cooling & Current Check",
+        "No Mess Protection Jacket"
+      ],
+      "meta_title": "Split AC Jet Pump Cleaning Service Delhi NCR",
+      "meta_desc": "Professional jet cleaning for Split AC at your doorstep.",
+      "display_order": 4
+    },
+    {
+      "id": 5,
+      "category": "AC",
+      "title": "AC Gas Charging & Leakage Repair",
+      "slug": "ac-gas-charging",
+      "description": "Complete vacuuming, high-pressure nitrogen leak test, brazing repair, and pure R32/R410A gas refill.",
+      "price": 1899,
+      "unit_label": "per unit",
+      "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "Full Vacuuming & Pressure Test",
+        "Nitrogen Leak Detection",
+        "100% Pure Virgin Refrigerant",
+        "180-Day Guarantee on Cooling",
+        "Ampere & Pressure Verification"
+      ],
+      "meta_title": "AC Gas Refill & Leakage Repair Delhi NCR",
+      "meta_desc": "Guaranteed AC gas charging with 6 months warranty.",
+      "display_order": 5
+    },
+    {
+      "id": 6,
+      "category": "AC",
+      "title": "AC Installation / Uninstallation",
+      "slug": "ac-installation-service",
+      "description": "Safe dismantling or precision installation of Split & Window ACs with heavy-duty brackets.",
+      "price": 899,
+      "unit_label": "installation",
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop",
+      "features": [
+        "Perfect Water Level Alignment",
+        "Vacuuming Before Gas Release",
+        "Heavy Iron Outdoor Stand Setup",
+        "Core Cutting Assistance Available"
+      ],
+      "meta_title": "Split & Window AC Installation Service Delhi NCR",
+      "meta_desc": "Hassle-free AC installation and shifting by verified technicians.",
+      "display_order": 6
+    }
+  ],
+  "leads_bookings": [
+    {
+      "id": "lead_1789138660779",
+      "lead_ref": "SC-5479",
+      "customer_name": "Amit Verma",
+      "phone": "9811223344",
+      "email": "",
+      "service_type": "CCTV",
+      "sub_service": "4-Camera Kit",
+      "address": "Flat 402, Shipra Sun City",
+      "area": "Indirapuram, Ghaziabad",
+      "status": "new_lead",
+      "estimated_amount": 8999,
+      "assigned_technician": "Unassigned",
+      "notes": "",
+      "utm_source": "Website Direct",
+      "created_at": "2026-09-11T14:57:40.779Z"
+    },
+    {
+      "id": "lead_101",
+      "lead_ref": "SC-9241",
+      "customer_name": "Vikram Malhotra",
+      "phone": "9811223344",
+      "email": "vikram.m@gmail.com",
+      "service_type": "CCTV",
+      "sub_service": "4-Camera Full Property Security Kit",
+      "address": "Flat 402, Tower B, ATS Advantage, Indirapuram",
+      "area": "Indirapuram & Vaishali",
+      "status": "new_lead",
+      "estimated_amount": 8999,
+      "assigned_technician": "Unassigned",
+      "notes": "Prefers installation tomorrow morning between 10 AM and 12 PM.",
+      "created_at": "2026-09-11T06:15:00.000Z"
+    },
+    {
+      "id": "lead_102",
+      "lead_ref": "SC-9240",
+      "customer_name": "Pooja Verma",
+      "phone": "9955443322",
+      "email": "pooja.v@outlook.com",
+      "service_type": "AC",
+      "sub_service": "AC Gas Charging & Leakage Repair",
+      "address": "House 18, Sector 15, Noida",
+      "area": "Sector 62",
+      "status": "technician_assigned",
+      "estimated_amount": 1899,
+      "assigned_technician": "Ramesh Kumar (Tech #04)",
+      "notes": "Split AC not cooling since yesterday. Customer requested call before arrival.",
+      "created_at": "2026-09-11T05:30:00.000Z"
+    },
+    {
+      "id": "lead_103",
+      "lead_ref": "SC-9239",
+      "customer_name": "Rohit Sehgal",
+      "phone": "9711889900",
+      "email": "rohit.sehgal@business.in",
+      "service_type": "CCTV",
+      "sub_service": "CCTV Repair & Diagnostic Visit",
+      "address": "SCO 45, Cyber City Hub, Gurugram",
+      "area": "Cyber City & DLF",
+      "status": "completed",
+      "estimated_amount": 1250,
+      "assigned_technician": "Sunil Sharma (Tech #01)",
+      "notes": "Replaced faulty power adapter and reset DVR cloud link. Paid via UPI.",
+      "created_at": "2026-09-10T14:20:00.000Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "client_name": "Anil Singhania",
+      "locality": "DLF Magnolias, Gurugram",
+      "service_category": "CCTV",
+      "review": "Had 8 IP cameras installed for our villa. The wiring was completely concealed inside PVC casings, zero clutter. The mobile app setup was swift and clear.",
+      "rating": 5,
+      "status": "approved",
+      "is_featured": true
+    },
+    {
+      "id": 2,
+      "client_name": "Meenakshi Joshi",
+      "locality": "Sector 62, Noida",
+      "service_category": "AC",
+      "review": "Booked jet cleaning for 3 split ACs. The technician came with a protective jacket so not a single drop soiled my newly painted walls. Cooling is ice cold now!",
+      "rating": 5,
+      "status": "approved",
+      "is_featured": true
+    },
+    {
+      "id": 3,
+      "client_name": "Col. R. K. Bakshi (Retd.)",
+      "locality": "Dwarka Sector 12, New Delhi",
+      "service_category": "CCTV",
+      "review": "Reliable and punctual. Arrived in 45 minutes when our society DVR went blank. Replaced the adapter and restored recordings with complete transparency in billing.",
+      "rating": 5,
+      "status": "approved",
+      "is_featured": true
+    }
+  ]
+}
